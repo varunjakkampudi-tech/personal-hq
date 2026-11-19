@@ -29,6 +29,10 @@ Local browser edits do not sync to GitHub automatically. Sync the dashboard expo
 
 General, non-personalized routine guidance and the information needed to tailor it are in [research/health-routine-starter.md](research/health-routine-starter.md). No calorie, weight, supplement, or intensive exercise plan is assumed.
 
+## Career transition preparation
+
+The February 2027 role-change plan uses the blank, private intake and verification workbook in [research/career-transition-workbook.md](research/career-transition-workbook.md). It covers verified chronology, achievement evidence, role constraints, resume review gates and portal privacy checks. Do not commit completed personal values, the resume, credentials or OTPs to this repo or to public Pages.
+
 Profile updates and public posts should be reviewed by Varun before submission or publication.
 
 ## Dairy farm supplier research
