@@ -486,12 +486,12 @@
       {
         "id": "task-37",
         "owner": "Varun",
-        "source": "Gmail, Cashfree email 19 Nov 2026",
-        "nextAction": "Review requested business information and determine the appropriate merchant-onboarding sequence; keep bank/KYC identifiers out of Personal HQ.",
+        "source": "Gmail, Cashfree document-submission confirmation 19 Nov 2026",
+        "nextAction": "Wait for the onboarding verification result; check after the stated review window and respond only to a verified request.",
         "title": "Review Cashfree merchant onboarding request",
         "area": "ValueMela",
         "status": "Waiting",
-        "notes": "Cashfree says business details are awaiting completion; no deadline was stated."
+        "notes": "Cashfree confirmed the requested documents were successfully uploaded on 19 Nov 2026 and the onboarding team is verifying them, usually within 48 hours. Submission is confirmed; merchant approval is not. Follow-up remains open."
       },
       {
         "id": "task-38",
@@ -608,6 +608,17 @@
         "due": "2026-11-20",
         "status": "Waiting",
         "notes": "An Instagram post is scheduled for 2026-11-20 18:00 IST. The latest read-only checks did not find a matching YouTube upload or scheduled YouTube row. No changes were made."
+      },
+      {
+        "id": "task-50",
+        "owner": "Varun",
+        "source": "Factori store notifications, 19 Nov 2026",
+        "title": "Review new ValueMela customer sign-ups",
+        "area": "ValueMela",
+        "due": null,
+        "status": "Not started",
+        "nextAction": "Review the new sign-up record(s) in the store dashboard and decide whether any verification or follow-up is needed. Keep customer names, contact details and account data out of Personal HQ.",
+        "notes": "Two Factori customer-signup notifications arrived on 19 Nov 2026. They confirm sign-ups only, not purchases or orders."
       }
     ],
     "habits": [
