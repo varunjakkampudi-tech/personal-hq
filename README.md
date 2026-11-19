@@ -9,7 +9,7 @@ A local-first dashboard for projects, tasks, milestones and a flexible daily rou
 - CareerScope, AI World 360 Media daily publishing on YouTube and Instagram, ValueMela, and personal health/routine.
 - Other desktop projects and responsibilities are listed for status review: OraOne, the Godavari dairy guide, Family, FixHub24, LensMate, Training & learning, and Life admin.
 
-Most seeded tasks are **Not started**; two preliminary supplier-research items are **In progress** and explicitly lack vendor contact, quotes or verification. Project progress weights Done as 100%, In progress as 50%, Waiting as 25% and Not started as 0%. Seeded statuses are planning estimates and are not evidence of completed work.
+Most seeded tasks are **Not started**; two preliminary supplier-research items are **In progress** and explicitly lack vendor contact, quotes or verification. Project percentages now count only tasks marked **Done**, divided by all tasks in that area; in-progress and waiting work do not inflate the completion percentage. Seeded statuses are planning estimates and are not evidence of completed work.
 
 ## Edit and privacy
 
