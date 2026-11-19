@@ -17,6 +17,31 @@ First decide whether “solar CCTV” means a small independent solar supply for
 
 Use the vendor shortlist as a request-for-quote queue, not as a recommendation to purchase. Ask each solar bidder for a site-specific single-line diagram, itemized equipment schedule, generation assumptions, battery autonomy assumptions, earthing and surge protection, mounting/wind design, commissioning records, warranties, maintenance scope, GST details, and references that can be called. Ask for separate options for (a) grid-tied, (b) hybrid with critical-load backup, and (c) dedicated solar CCTV if those options are technically relevant at the site. Do not assume a rooftop subsidy applies to a farm/commercial system.
 
+## Before requesting comparable quotes
+
+Collect these project facts first and share them directly with qualified bidders, not in this repository: exact site/plot and ownership or lease status; site plan and access; flood level, soil and drainage observations; grid connection and outage pattern; water source/pump schedule; milking, cooling and other electrical equipment; network coverage; camera views and retention needs; species and herd mix; launch date; phase-one capacity (20) and expansion footprint (40); budget range and decision maker. Mark unknowns as unknown rather than letting bidders silently assume them. Ask each bidder to state assumptions and exclusions on the quote.
+
+## GST and commercial-document checks for every proposed supplier
+
+Capture only business-verification status in the tracker; handle tax IDs, bank records, signatures and contracts through a private business-record system. For each bidder, verify the legal name and GSTIN using the official GST search facility and check that the displayed legal/trade name and registration status are consistent with the contracting party. Ask for a GST tax invoice or legally appropriate quotation that separately identifies taxable value, HSN/SAC where applicable, tax rate and CGST/SGST or IGST, place of supply, invoice number/date, supplier and recipient details, and any freight, installation, civil-work or warranty charges. Have the CA confirm tax treatment, input-tax-credit eligibility and whether the quoted contracting entity matches the GST registration. A GSTIN lookup is a status check, not proof of technical capability or a guarantee against fraud.
+
+For contract readiness, collect the exact scope and exclusions, drawings/calculations, make/model/quantity schedule, delivery and commissioning milestones, payment triggers, tax treatment, delay and defect remedies, warranty/service response, insurance, named responsible engineer, references with permission, and termination/retention terms. Do not pay advances or accept a quote based solely on verbal claims or directory ratings.
+
+### Comparable quote scorecard
+
+Score each bidder from 0 (missing/failed) to 5 (documented and strong); attach evidence and unresolved questions to every score. Do not rank a bidder as technically acceptable while any safety-critical design item is missing.
+
+| Criterion | Weight | Evidence to request |
+|---|---:|---|
+| Site-fit and complete scope | 20% | Site visit, drawings, assumptions, 20-to-40 expansion and exclusions |
+| Technical design and safety | 20% | Signed calculations/design responsibility, electrical/structural safety, drainage, earthing, wind/flood assumptions as relevant |
+| Comparable references and delivery capacity | 15% | Two relevant completed references, permission to contact, named team and schedule |
+| GST and contracting clarity | 15% | GSTIN status/name check, itemized tax quote, legal contracting entity and CA review |
+| Warranty, service and support | 15% | Written warranty, response times, spares and maintenance terms |
+| Total lifecycle cost and payment risk | 15% | Like-for-like total including tax, civil work, exclusions, operating costs and milestone-based payments |
+
+Weighted score = sum of (criterion score ÷ 5 × weight). Use the score to structure diligence, not as an automatic purchase decision; owner and qualified professional review remain necessary.
+
 ## CCTV and farm security
 
 | Candidate | Public evidence found | Why include in first quote round | What remains unverified |
