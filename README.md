@@ -1,6 +1,8 @@
 # Varun’s Personal HQ
 
-A local-first dashboard for projects, tasks, milestones and a flexible daily routine. Open `index.html` in a browser. Tasks and completion state are stored in that browser’s local storage on this device.
+A local-first dashboard for projects, tasks, milestones and a flexible daily routine. Open [the new life system](life-system/index.html) in a browser. Tasks and completion state are stored in that browser’s local storage on this device.
+
+The consolidated dashboard, complete task snapshot, planning notes and dated history are in [`life-system/`](life-system/README.md). It is also the default dashboard on GitHub Pages. Task edits remain browser-local until backed up or exported. The repository is public, so keep personal profile content, customer records, health data, identity documents, credentials, and business/tax identifiers out of committed files.
 
 ## Current focus areas
 
@@ -15,7 +17,7 @@ Most seeded tasks are **Not started**; two preliminary supplier-research items a
 
 Use **Add a task** and the status dropdowns in the dashboard. When the local dashboard opens, it now merges newly seeded tasks and categories into existing browser data while preserving recorded task statuses. Use **Backup** to download a JSON copy and **Restore** to load it on this device. Task and habit data still lives in this browser’s local storage; the backup file is the way to carry data between devices. The initial task set can be edited in the page’s `seed` data. No credentials, resume contents, or account tokens belong in this repository. This repository is public. All tracked files, task snapshots and Git history are visible to anyone. Keep personal details, customer data, contact information, credentials and government identifiers out of it.
 
-Local browser edits do not sync to GitHub automatically. Syncing exports and pushes task details into this public repository. Review the export and remove personal or sensitive details first. The repository is `https://github.com/varunjakkampudi-tech/personal-hq`; GitHub Pages is a separate public generic template.
+Local browser edits do not sync to GitHub automatically. Syncing exports and pushes the review snapshot plus a sanitized task-only feed (`life-system/tasks.json` and `life-system/data.js`) into this public repository. The Pages dashboard can load the latest synced task feed. Review exports and keep personal or sensitive details out. The repository is `https://github.com/varunjakkampudi-tech/personal-hq`.
 
 ## Next setup steps
 
@@ -53,7 +55,7 @@ The review-first GST checklist is in [research/valuemela-gst-registration.md](re
 
 ## Task registry for daily review
 
-`private/task-registry.json` is the machine-readable task snapshot used by the daily review when available. The folder name does not provide access control: this file and all repository history are public. It must never contain sensitive details. It is not copied to the public Pages repository. The dashboard itself still uses browser local storage. After changing task statuses, choose **Sync tasks** in the dashboard. A local Windows task checks Downloads for the newest fresh export every 15 minutes and after sign-in, validates it with `tools/sync-task-registry.ps1`, keeps a pre-sync backup, and pushes only `private/task-registry.json` to this public repo. It ignores missing, stale, or unsupported exports. The sync log is `%LOCALAPPDATA%\Personal-HQ\sync-automation.log`; it does not include task content. To run the helper immediately, use `pwsh -NoProfile -File .\tools\sync-task-registry.ps1`. To remove the watcher, run `Unregister-ScheduledTask -TaskName 'Personal HQ task export sync' -Confirm:$false`. The daily review must state that reconciliation is pending if the snapshot is stale or unavailable. Do not put the registry in the public Pages repository.
+`private/task-registry.json` is the machine-readable snapshot used by the daily review when available. The folder name does not provide access control: this file and all repository history are public. It must never contain sensitive details and is not copied to Pages. The dashboard stores browser edits locally. After changing task statuses, choose **Export tasks**. A local Windows task checks Downloads every 15 minutes and after sign-in, validates the fresh export with `tools/sync-task-registry.ps1`, keeps a pre-sync backup, and pushes the review snapshot plus sanitized task-only `life-system/tasks.json` and `life-system/data.js`. The Pages dashboard can load the latest published task snapshot with **Load latest tasks**. Personal notes, habits and life-log entries are not included in that feed. The watcher ignores missing, stale or unsupported exports. Its log is `%LOCALAPPDATA%\Personal-HQ\sync-automation.log` and does not include task content. Run the helper with `pwsh -NoProfile -File .\tools\sync-task-registry.ps1`; remove the watcher with `Unregister-ScheduledTask -TaskName 'Personal HQ task export sync' -Confirm:$false`. The daily review must report when the snapshot is stale or unavailable.
 
 The sync helper refuses an export that omits any task ID already in the registry. Before syncing from the public Pages dashboard, restore a complete backup from this desktop dashboard so the public browser has the full task list; this prevents an empty or partial template from replacing existing work.
 

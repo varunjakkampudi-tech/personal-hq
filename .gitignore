@@ -5,3 +5,5 @@ personal-hq-*.json
 node_modules/
 .DS_Store
 Thumbs.db
+
+life-system/private/
