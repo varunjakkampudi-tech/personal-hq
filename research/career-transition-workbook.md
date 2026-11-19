@@ -79,6 +79,27 @@ Use a small, representative set of current job descriptions after role/location 
 
 Do not turn a desired job requirement into a resume skill unless supported by direct experience or accurately labelled project practice.
 
+## 4c. Technical preparation and mock interviews
+
+This plan may begin while resume evidence is still being verified. Prioritize fundamentals and gaps from representative full-stack roles after location and seniority preferences are known.
+
+| Topic | Current baseline / evidence | Gap to work on | Practice activity | Review date / outcome |
+|---|---|---|---|---|
+| JavaScript / TypeScript |  |  |  |  |
+| React |  |  |  |  |
+| Backend APIs / authentication |  |  |  |  |
+| SQL / data modeling |  |  |  |  |
+| Caching / async processing |  |  |  |  |
+| Testing / debugging |  |  |  |  |
+| Web security |  |  |  |  |
+| Data structures and algorithms |  |  |  |  |
+| System design |  |  |  |  |
+
+| Mock interview date | Format / topics | Feedback or gap | Follow-up practice | Revisit date / result |
+|---|---|---|---|---|
+|  |  |  |  |  |
+|  |  |  |  |  |
+
 ## 5. Resume package and review gates
 
 - [ ] Confirm source resume and date of last update.
@@ -87,7 +108,8 @@ Do not turn a desired job requirement into a resume skill unless supported by di
 - [ ] Select role families and create only relevant tailored versions.
 - [ ] Check every technical claim, metric, ownership verb, link, and date.
 - [ ] Review ATS readability, spelling, length, and consistent formatting.
-- [ ] Approve final resume content before uploading anywhere.
+- [ ] Approve the exact private master-resume copy; record the approved version and date.
+- [ ] Separately approve each exact profile change, upload, visibility choice, application or outreach before submitting it.
 - [ ] Store final versions in a private location; do not publish the file in this repository.
 
 ## 6. Profile and portal inventory
