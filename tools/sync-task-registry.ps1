@@ -108,6 +108,49 @@ $publicSnapshot = [ordered]@{
 $publicTasksJson = $publicSnapshot | ConvertTo-Json -Depth 20
 $publicSeedContent = 'window.PERSONAL_HQ_SEED = ' + $publicTasksJson.Trim() + ';'
 
+function Sync-PagesTaskFeed {
+    $pagesRoot = 'C:\Users\Admin\Desktop\Personal-HQ-Pages'
+    if (-not (Test-Path -LiteralPath (Join-Path $pagesRoot '.git'))) { throw "The Personal HQ Pages repository was not found at $pagesRoot." }
+    $pagesRemote = (& git -C $pagesRoot remote get-url origin 2>$null)
+    if ($LASTEXITCODE -ne 0 -or $pagesRemote -notmatch '^https://github\.com/varunjakkampudi-tech/personal-hq-pages\.git$') { throw 'The Pages origin is not the expected public Personal HQ Pages repository.' }
+    $pagesBranch = (& git -C $pagesRoot branch --show-current)
+    if ($LASTEXITCODE -ne 0 -or $pagesBranch -ne 'main') { throw "Expected Pages branch main; found '$pagesBranch'." }
+    git -C $pagesRoot fetch origin main
+    if ($LASTEXITCODE -ne 0) { throw 'Could not fetch the Pages branch before syncing its task feed.' }
+    $tracking = (& git -C $pagesRoot rev-list --left-right --count origin/main...HEAD)
+    if ($LASTEXITCODE -ne 0) { throw 'Could not compare the Pages branch with origin/main.' }
+    $counts = @($tracking -split '\s+' | Where-Object { $_ -ne '' })
+    if ($counts.Count -ne 2) { throw 'Could not parse the Pages branch tracking counts.' }
+    $behind = [int]$counts[0]
+    $ahead = [int]$counts[1]
+    if ($behind -gt 0) { throw 'The Pages branch is behind origin/main. Review and update it before mirroring task data.' }
+    if ($ahead -gt 0) {
+        $subject = (& git -C $pagesRoot log -1 --format=%s)
+        $paths = @(& git -C $pagesRoot diff-tree --no-commit-id --name-only -r HEAD)
+        $allowed = @('life-system/tasks.json', 'life-system/data.js')
+        if ($LASTEXITCODE -ne 0 -or $ahead -ne 1 -or $subject -notmatch '^Sync task feed \d{4}-\d{2}-\d{2} \d{2}:\d{2}$' -or @($paths | Where-Object { $_ -notin $allowed }).Count -gt 0 -or $paths.Count -eq 0) { throw 'The Pages branch has unpublished commits outside a single task-feed update. Review it before syncing.' }
+        $status = @(& git -C $pagesRoot status --porcelain --untracked-files=all)
+        if ($LASTEXITCODE -ne 0 -or $status.Count -gt 0) { throw 'The Pages branch has uncommitted changes. Review them before retrying the task-feed push.' }
+        git -C $pagesRoot push origin main
+        if ($LASTEXITCODE -ne 0) { throw 'The Pages task-feed commit is ready, but pushing it failed.' }
+        Write-Output 'Pushed the pending sanitized task feed to the Pages repository.'
+    }
+    $status = @(& git -C $pagesRoot status --porcelain --untracked-files=all)
+    if ($LASTEXITCODE -ne 0 -or $status.Count -gt 0) { throw 'The Pages repository has local changes. Review them before mirroring task data.' }
+    Copy-Item -LiteralPath $publicTasksPath -Destination (Join-Path $pagesRoot 'life-system/tasks.json') -Force
+    Copy-Item -LiteralPath $publicSeedPath -Destination (Join-Path $pagesRoot 'life-system/data.js') -Force
+    git -C $pagesRoot add -- 'life-system/tasks.json' 'life-system/data.js'
+    if ($LASTEXITCODE -ne 0) { throw 'Git could not stage the sanitized task feed in the Pages repository.' }
+    $staged = @(& git -C $pagesRoot diff --cached --name-only)
+    if ($LASTEXITCODE -ne 0 -or @($staged | Where-Object { $_ -notin @('life-system/tasks.json', 'life-system/data.js') }).Count -gt 0) { throw 'The Pages index contains paths outside the sanitized task feed; refusing to commit.' }
+    if ($staged.Count -eq 0) { Write-Output 'The sanitized task feed already matches the Pages repository.'; return }
+    git -C $pagesRoot commit --only -m ('Sync task feed ' + (Get-Date -Format 'yyyy-MM-dd HH:mm')) -- 'life-system/tasks.json' 'life-system/data.js'
+    if ($LASTEXITCODE -ne 0) { throw 'Git could not commit the sanitized task feed in the Pages repository.' }
+    git -C $pagesRoot push origin main
+    if ($LASTEXITCODE -ne 0) { throw 'The Pages task-feed commit succeeded locally, but pushing it failed.' }
+    Write-Output 'Synced the sanitized task feed to the public Pages repository.'
+}
+
 $remoteUrl = (& git -C $repoRoot remote get-url origin 2>$null)
 if ($LASTEXITCODE -ne 0 -or $remoteUrl -notmatch '^https://github\.com/varunjakkampudi-tech/personal-hq\.git$') {
     throw 'The origin remote is not the expected public Personal HQ GitHub repository.'
@@ -171,6 +214,7 @@ if ($samePublicTasks -and $samePublicSeed) {
         git -C $repoRoot push origin main
         if ($LASTEXITCODE -ne 0) { throw 'The task-sync commit is ready, but pushing it to GitHub failed.' }
     }
+    Sync-PagesTaskFeed
     Write-Output 'The sanitized public task feed already matches this export.'
     return
 }
@@ -184,5 +228,6 @@ if ($LASTEXITCODE -ne 0) { throw 'Git could not commit the sanitized public task
 
 git -C $repoRoot push origin main
 if ($LASTEXITCODE -ne 0) { throw 'The local registry commit succeeded, but pushing to GitHub failed.' }
+Sync-PagesTaskFeed
 
 Write-Output ("Synced " + $export.data.tasks.Count + " tasks to the public Personal HQ repository.")
