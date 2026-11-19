@@ -531,6 +531,27 @@
         "area": "FixHub24",
         "status": "Not started",
         "notes": "GitHub run 44498373031 failed the Dependency Vulnerability Audit on 19 Nov 2026 for main SHA 7ce251f8c253f5729156acf0d88953082140a37a. Review the audit details and project authorization before changing code."
+      },
+      {
+        "id": "task-42",
+        "owner": "Varun",
+        "source": "Gmail, Cashfree verification email 19 Nov 2026",
+        "nextAction": "Check the Cashfree dashboard or email for the document-verification decision after the stated 2–3 working days; respond only to a verified request and keep banking/KYC data out of Personal HQ.",
+        "title": "Follow up on Cashfree verification for ValueMela",
+        "area": "ValueMela",
+        "due": "2026-11-24",
+        "status": "Waiting",
+        "notes": "Cashfree confirmed that submitted documents are under review and said it would update within 2–3 working days. Do not treat this as merchant approval."
+      },
+      {
+        "id": "task-43",
+        "owner": "Varun",
+        "source": "Gmail, GitHub Actions notification 19 Nov 2026",
+        "nextAction": "Inspect the run's Services, integration, and browser suite failure annotations, then follow the active CareerScope stage authorization before any code change.",
+        "title": "Review new CareerScope CI failure on run 44492306240",
+        "area": "CareerScope",
+        "status": "Not started",
+        "notes": "Run for commit a620fca: Services, integration, and browser suites failed; quality gates and production image build succeeded. This is a review task, not permission to edit."
       }
     ],
     "habits": [
