@@ -2,7 +2,7 @@
 
 A local-first dashboard for projects, tasks, milestones and a flexible daily routine. Open [the new life system](life-system/index.html) in a browser. Tasks and completion state are stored in that browser’s local storage on this device.
 
-The consolidated dashboard, complete task snapshot, planning notes and dated history are in [`life-system/`](life-system/README.md). It is also the default dashboard on GitHub Pages. Task edits remain browser-local until backed up or exported. The repository is public, so keep personal profile content, customer records, health data, identity documents, credentials, and business/tax identifiers out of committed files.
+The consolidated dashboard, complete task snapshot, planning notes and dated history are in [`life-system/`](life-system/README.md). It is also the default dashboard on GitHub Pages. Task edits remain browser-local until backed up or exported; the Today view shows this boundary and last local backup time. The repository is public, so keep personal profile content, customer records, health data, identity documents, credentials, and business/tax identifiers out of committed files.
 
 ## Current focus areas
 
