@@ -54,6 +54,31 @@ For each number, verify baseline, timeframe, sample size, calculation, and your 
 | AWS |  |  |  |  |  |
 | Other |  |  |  |  |  |
 
+Separate technologies personally used from technologies listed in repository architecture or team documentation. For every full-stack claim, record one concrete example of the API/business logic, data access, authorization, tests and delivery path you personally handled. If a layer was not personally owned, state that accurately and identify the skill gap to practice.
+
+## 4a. Project and interview evidence
+
+Keep project and employer-sensitive details private. Choose at most two projects for first-round explanations and complete a row for each before using it in an interview or resume.
+
+| Project / feature slice | Repository / PR or private evidence pointer | Exact personal role | Architecture and key flow | Important trade-off | Failure or edge case handled | Tests / runtime evidence | Disclosure allowed? | Interview explanation practiced? |
+|---|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |
+
+For each example, distinguish implementation visible in code, personal contribution, checks actually run, CI evidence, branch integration and production use. Never claim production operation from repository code or a merged pull request alone.
+
+## 4b. Role-to-evidence and skill-gap matrix
+
+Use a small, representative set of current job descriptions after role/location preferences are known. Keep employer-identifying notes private.
+
+| Role requirement | Evidence already verified | Strength / gap | Practice or evidence next step | Priority |
+|---|---|---|---|---|
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+
+Do not turn a desired job requirement into a resume skill unless supported by direct experience or accurately labelled project practice.
+
 ## 5. Resume package and review gates
 
 - [ ] Confirm source resume and date of last update.
@@ -108,7 +133,9 @@ This is a verified starting shortlist for the currently known technical skills (
 - Roles applied to / follow-up dates (keep employer-sensitive details private):
 - Weekly review day:
 
-Track the pipeline as researched → selected → reviewed → applied → response → interview → decision. Record only factual dates and outcomes; do not infer that an alert is an application or an interview invitation.
+Prepare a 30–60 second introduction using only approved, verified resume facts. Confirm practical interview scheduling windows and joining constraints when known; keep dates private and do not infer a joining date from the February search target.
+
+Track the pipeline as researched → selected → reviewed → applied → response → interview → decision. Use these fields in the private tracker: company, role, source/link, role-match notes, resume version, application date, status, next action, follow-up date, interview stage/date, outcome and decision. Record only factual dates and outcomes; do not infer that an alert is an application or an interview invitation. Review open follow-ups and interview feedback weekly; preserve completed applications and carry unresolved next actions forward.
 
 ## Completion criteria for the February 2027 move
 
