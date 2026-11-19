@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-19T08:48:27.205Z",
+  "updatedAt": null,
   "data": {
     "areas": [
       "Career move",
@@ -470,5 +470,6 @@
       }
     ]
   },
-  "registryStatus": "starter-seed-status-not-reconciled-with-dashboard"
+  "registryStatus": "starter-seed-status-not-reconciled-with-dashboard",
+  "createdAt": "2026-11-19T08:48:27.205Z"
 }
