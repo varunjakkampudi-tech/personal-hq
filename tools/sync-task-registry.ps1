@@ -69,6 +69,50 @@ foreach ($task in $export.data.tasks) {
     }
 }
 
+# Public task refreshes contain no private notes. Preserve existing registry notes
+# for imported fields unless the dashboard editor explicitly confirmed clearing them.
+$existingNotesByTaskId = [System.Collections.Generic.Dictionary[string, string]]::new([System.StringComparer]::Ordinal)
+if (Test-Path -LiteralPath $registryPath) {
+    $existingRegistryForNotes = Get-Content -LiteralPath $registryPath -Raw | ConvertFrom-Json
+    foreach ($existingTaskForNotes in $existingRegistryForNotes.data.tasks) {
+        $existingNote = [string]$existingTaskForNotes.notes
+        if ($existingTaskForNotes.id -and -not [string]::IsNullOrWhiteSpace($existingNote)) {
+            $existingNotesByTaskId[[string]$existingTaskForNotes.id] = $existingNote
+        }
+    }
+}
+foreach ($task in $export.data.tasks) {
+    $clearNotesProperty = $task.PSObject.Properties['clearNotes']
+    $clearNotesConfirmed = $null -ne $clearNotesProperty -and [bool]$clearNotesProperty.Value
+    $preservePrivateProperty = $task.PSObject.Properties['preservePrivateNotes']
+    $preservePrivateNotes = $null -ne $preservePrivateProperty -and [bool]$preservePrivateProperty.Value
+    $taskId = [string]$task.id
+    if (-not $clearNotesConfirmed -and $existingNotesByTaskId.ContainsKey($taskId)) {
+        $existingPrivateNote = $existingNotesByTaskId[$taskId]
+        $incomingNote = [string]$task.notes
+        $mergedNote = $null
+        if ([string]::IsNullOrWhiteSpace($incomingNote)) {
+            $mergedNote = $existingPrivateNote
+        } elseif ($preservePrivateNotes) {
+            if ($existingPrivateNote.Contains($incomingNote, [System.StringComparison]::Ordinal)) {
+                $mergedNote = $existingPrivateNote
+            } else {
+                $mergedNote = $existingPrivateNote + [Environment]::NewLine + [Environment]::NewLine + $incomingNote
+            }
+        }
+        if ($null -ne $mergedNote) {
+            $notesProperty = $task.PSObject.Properties['notes']
+            if ($null -eq $notesProperty) {
+                $task | Add-Member -NotePropertyName notes -NotePropertyValue $mergedNote
+            } else {
+                $task.notes = $mergedNote
+            }
+        }
+    }
+    if ($null -ne $clearNotesProperty) { $task.PSObject.Properties.Remove('clearNotes') }
+    if ($null -ne $preservePrivateProperty) { $task.PSObject.Properties.Remove('preservePrivateNotes') }
+}
+
 $allJson = $export | ConvertTo-Json -Depth 50
 if ($allJson -match '(?<!\d)\d{12}(?!\d)' -or $allJson -match '\b[A-Z]{5}\d{4}[A-Z]\b' -or $allJson -match '\b[A-Z0-9]{15}\b' -or $allJson -match '(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b' -or $allJson -match '(?<!\d)(?:\+?91[- .]?)?[6-9]\d{9}(?!\d)') {
     throw 'The export appears to contain a government identifier, GSTIN, email address or phone number. Remove sensitive details before syncing to this public repository.'
