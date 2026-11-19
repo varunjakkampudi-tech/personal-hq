@@ -39,7 +39,13 @@ if (-not $export.updatedAt) {
     throw 'The export has no verified sync timestamp.'
 }
 
-$syncedAt = [DateTimeOffset]::Parse($export.updatedAt).ToUniversalTime()
+if ($export.updatedAt -is [DateTimeOffset]) {
+    $syncedAt = $export.updatedAt.ToUniversalTime()
+} elseif ($export.updatedAt -is [DateTime]) {
+    $syncedAt = [DateTimeOffset]::new($export.updatedAt).ToUniversalTime()
+} else {
+    $syncedAt = [DateTimeOffset]::Parse([string]$export.updatedAt, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::AssumeUniversal).ToUniversalTime()
+}
 $age = [DateTimeOffset]::UtcNow - $syncedAt
 if ($age.TotalMinutes -lt -5 -or $age.TotalHours -gt 24) {
     throw 'The dashboard export timestamp is in the future or older than 24 hours. Create a fresh export.'
