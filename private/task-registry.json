@@ -476,12 +476,12 @@
       {
         "id": "task-36",
         "owner": "Varun",
-        "source": "Gmail sent requests, 18–19 Nov 2026",
-        "nextAction": "Check for replies about address-field behavior, storefront design and pricing, and branded contact email; consolidate any follow-up.",
+        "source": "Gmail sent support request, 19 Nov 2026",
+        "nextAction": "Check for a reply about the branded customer-facing support email setting; preserve account sign-in and order-notification routing.",
         "title": "Follow up on ValueMela storefront support requests",
         "area": "ValueMela",
         "status": "Waiting",
-        "notes": "No support reply found in the recent Gmail search as of 19 Nov 2026."
+        "notes": "A branded-email configuration request was sent to the platform support addresses on 19 Nov. No support reply was found in the recent inbox search."
       },
       {
         "id": "task-37",
@@ -496,12 +496,12 @@
       {
         "id": "task-38",
         "owner": "Varun",
-        "source": "Gmail, Razorpay access notification 19 Nov 2026",
+        "source": "Business account permission notification, 19 Nov 2026",
         "nextAction": "Confirm in the Razorpay dashboard that Factori access and its scope are still needed; do not revoke automatically.",
-        "title": "Review Factori access grant to ValueMela's Razorpay account",
+        "title": "Review external payment-platform access",
         "area": "ValueMela",
         "status": "Waiting",
-        "notes": "Razorpay notified that access was granted to retailing.factori.com."
+        "notes": "A payment provider notified that third-party platform access was granted. Confirm the intended scope in the provider dashboard; do not revoke automatically."
       },
       {
         "id": "task-39",
@@ -526,12 +526,12 @@
       {
         "id": "task-41",
         "owner": "Varun",
-        "source": "Gmail and GitHub Actions, 19 Nov 2026",
-        "nextAction": "Review the two advisory records and affected dependency paths, assess a compatible remediation, and confirm project authorization before changing the FixHub24 main branch.",
+        "source": "GitHub Actions and FixHub24 lockfile, 19 Nov 2026",
+        "nextAction": "Review Dependabot PR #23 and #24 validation and decide merge order; do not merge or change dependencies without owner authorization.",
         "title": "Review repeated FixHub24 main-branch CI failures",
         "area": "FixHub24",
-        "status": "Not started",
-        "notes": "GitHub run 44498373031 failed the Dependency Vulnerability Audit on 19 Nov 2026 for main SHA 7ce251f8c253f5729156acf0d88953082140a37a. The audit reported high severity body-parser 2.0.0–2.3.0 denial-of-service exposure (GHSA-27r3-jxmh-p828) and moderate seroval 1.5.5–1.6.10 injection advisories (GHSA-9wx9-5pv9-3349 and GHSA-f86p-h4j2-7qgj); npm audit reported fixes available. Review dependency compatibility and project authorization before changing code."
+        "status": "In progress",
+        "notes": "Run 44498373031 on main SHA 7ce251f8c253f5729156acf0d88953082140a37a failed Dependency Vulnerability Audit. Lockfile has body-parser 2.3.0 via Express 5.3.0 (GHSA-27r3-jxmh-p828, high) and seroval 1.6.9 via TanStack packages (GHSA-f86p-h4j2-7qgj and GHSA-9wx9-5pv9-3349, moderate). Dependabot PR #23 upgrades body-parser to 2.4.0 and its check passed. PR #24 upgrades seroval to 1.7.7; its tests/build passed but audit still failed because body-parser remained. The local FixHub24 checkout has an unrelated dirty .env.example; it was preserved and not edited."
       },
       {
         "id": "task-42",
@@ -547,12 +547,12 @@
       {
         "id": "task-43",
         "owner": "Varun",
-        "source": "Gmail, GitHub Actions notification 19 Nov 2026",
-        "nextAction": "Inspect the ambiguous Playwright heading locator and search-run timestamp assertion, then follow the active CareerScope stage authorization before any code change.",
+        "source": "CareerScope GitHub Actions run 44512467883 and PR #108",
+        "nextAction": "Failure review is complete; PR #108 remains open pending owner-authorized merge.",
         "title": "Review new CareerScope CI failure on run 44492306240",
         "area": "CareerScope",
-        "status": "Not started",
-        "notes": "Run 44492306240 for commit a620fca on codex/stage05-item515-source-health: quality gates and production image build passed, but the services/integration/browser job failed. Its final browser check hit a Playwright strict-mode violation because the Recent source outcomes heading locator matched 6 result panels while waiting for a search-run timestamp. Review the selector/test evidence and active stage authorization before any code change; this is a review task, not permission to edit."
+        "status": "Done",
+        "notes": "Run 44512467883 passed all jobs on exact PR head 15dac2a1f68333a2427075ff8f29480a516c7159. Earlier run 44509297019 failed Firefox notifications-before-read because repeated GET /jobs requests continued during fixture reset. PR #108 remains open; owner merge authorization is pending."
       },
       {
         "id": "task-44",
