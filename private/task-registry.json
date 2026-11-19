@@ -520,7 +520,7 @@
         "title": "Review recent CareerScope CI failures for Stage 05 and 06",
         "area": "CareerScope",
         "status": "Not started",
-        "notes": "GitHub confirms failures for run 44480476991 (item 5.14, commit 87703a5), run 44490477511 (item 5.15, commit 82be764), and run 44497070313 (item 6.01, commit 036d0c1). Check current run/job details and project authorization before editing CareerScope."
+        "notes": "GitHub reports browser/accessibility checks failed in runs 44480476991 (item 5.14) and 44497070313 (item 6.01); run 44490477511 (item 5.15) failed policy/full-check and PostgreSQL/Redis integration jobs. Inspect current logs and honor CareerScope stage authorization before edits."
       },
       {
         "id": "task-41",
@@ -530,7 +530,7 @@
         "title": "Review repeated FixHub24 main-branch CI failures",
         "area": "FixHub24",
         "status": "Not started",
-        "notes": "Run 44498373031 failed on 19 Nov 2026 for main SHA 7ce251f8c253f5729156acf0d88953082140a37a; notification reports all jobs failed."
+        "notes": "GitHub run 44498373031 failed the Dependency Vulnerability Audit on 19 Nov 2026 for main SHA 7ce251f8c253f5729156acf0d88953082140a37a. Review the audit details and project authorization before changing code."
       }
     ],
     "habits": [
