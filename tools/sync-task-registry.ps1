@@ -117,7 +117,6 @@ $existingJson = if (Test-Path -LiteralPath $registryPath) {
 } else {
     $null
 }
-$sameRegistryContent = $false
 if ($existingJson) {
     $existing = $existingJson | ConvertFrom-Json
     $incomingTaskIds = [System.Collections.Generic.HashSet[string]]::new()
@@ -133,15 +132,9 @@ if ($existingJson) {
     if ($missingExistingTaskCount -gt 0) {
         throw "The export omits $missingExistingTaskCount task(s) already in the registry. Refusing to replace the full snapshot. Restore a complete dashboard backup before syncing."
     }
-    $sameRegistryContent = (($existingJson | ConvertFrom-Json | ConvertTo-Json -Depth 50 -Compress) -eq ($export | ConvertTo-Json -Depth 50 -Compress))
 }
  $samePublicTasks = (Test-Path -LiteralPath $publicTasksPath) -and ((Get-Content -LiteralPath $publicTasksPath -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 20 -Compress) -eq ($publicSnapshot | ConvertTo-Json -Depth 20 -Compress))
  $samePublicSeed = (Test-Path -LiteralPath $publicSeedPath) -and ((Get-Content -LiteralPath $publicSeedPath -Raw).Trim() -eq $publicSeedContent)
-if ($sameRegistryContent -and $samePublicTasks -and $samePublicSeed) {
-    Write-Output 'Task registry data already matches this export; no update was needed.'
-    exit 0
-}
-
 $backupDirectory = Join-Path $env:LOCALAPPDATA 'Personal-HQ\registry-backups'
 New-Item -ItemType Directory -Path $backupDirectory -Force | Out-Null
 if ($existingJson) {
@@ -154,12 +147,17 @@ Set-Content -LiteralPath $registryPath -Value $allJson -Encoding utf8
 Set-Content -LiteralPath $publicTasksPath -Value $publicTasksJson -Encoding utf8
 Set-Content -LiteralPath $publicSeedPath -Value $publicSeedContent -Encoding utf8
 
-git -C $repoRoot add -- $registryRelativePath $publicTasksRelativePath $publicSeedRelativePath
-if ($LASTEXITCODE -ne 0) { throw 'Git could not stage the task registry.' }
+if ($samePublicTasks -and $samePublicSeed) {
+    Write-Output 'Updated the local task registry; the sanitized public task feed already matches this export.'
+    exit 0
+}
+
+git -C $repoRoot add -- $publicTasksRelativePath $publicSeedRelativePath
+if ($LASTEXITCODE -ne 0) { throw 'Git could not stage the sanitized public task feed.' }
 
 $commitMessage = 'Sync task registry ' + (Get-Date -Format 'yyyy-MM-dd HH:mm')
-git -C $repoRoot commit --only -m $commitMessage -- $registryRelativePath $publicTasksRelativePath $publicSeedRelativePath
-if ($LASTEXITCODE -ne 0) { throw 'Git could not commit the task registry.' }
+git -C $repoRoot commit --only -m $commitMessage -- $publicTasksRelativePath $publicSeedRelativePath
+if ($LASTEXITCODE -ne 0) { throw 'Git could not commit the sanitized public task feed.' }
 
 git -C $repoRoot push origin main
 if ($LASTEXITCODE -ne 0) { throw 'The local registry commit succeeded, but pushing to GitHub failed.' }
