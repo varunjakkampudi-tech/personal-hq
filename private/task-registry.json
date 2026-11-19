@@ -516,11 +516,21 @@
         "id": "task-40",
         "owner": "Varun",
         "source": "Gmail, CareerScope GitHub Actions notifications 19 Nov 2026",
-        "nextAction": "Check current run/job details for both failures and confirm project authorization before editing CareerScope.",
-        "title": "Review failed CareerScope CI runs for Stage 05 search work",
+        "nextAction": "Check current run/job details for each failure and confirm project authorization before editing CareerScope.",
+        "title": "Review recent CareerScope CI failures for Stage 05 and 06",
         "area": "CareerScope",
         "status": "Not started",
-        "notes": "Run 44480476991 failed for item 5.14 at commit 87703a5; run 44490477511 failed for item 5.15 at commit 82be764."
+        "notes": "GitHub confirms failures for run 44480476991 (item 5.14, commit 87703a5), run 44490477511 (item 5.15, commit 82be764), and run 44497070313 (item 6.01, commit 036d0c1). Check current run/job details and project authorization before editing CareerScope."
+      },
+      {
+        "id": "task-41",
+        "owner": "Varun",
+        "source": "Gmail and GitHub Actions, 19 Nov 2026",
+        "nextAction": "Review current failure annotations and confirm owner-authorized next action before changing the FixHub24 main branch.",
+        "title": "Review repeated FixHub24 main-branch CI failures",
+        "area": "FixHub24",
+        "status": "Not started",
+        "notes": "Run 44498373031 failed on 19 Nov 2026 for main SHA 7ce251f8c253f5729156acf0d88953082140a37a; notification reports all jobs failed."
       }
     ],
     "habits": [
