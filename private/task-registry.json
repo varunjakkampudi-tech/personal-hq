@@ -575,6 +575,17 @@
         "due": "2026-12-02",
         "status": "Not started",
         "notes": "January 2027 is a conditional target. Resolve location, species, sales route, permissions, water, power, and cash flow before contracting or buying animals."
+      },
+      {
+        "id": "task-46",
+        "owner": "Varun",
+        "source": "Personal HQ AI World 360 publishing plan",
+        "nextAction": "Use research/ai-world-360-daily-workflow.md; confirm format, niche, channel links, daily publish time, production hours, and final review handoff.",
+        "title": "Set up AI World 360 daily publishing log and workflow",
+        "area": "AI World 360",
+        "due": "2026-11-25",
+        "status": "Not started",
+        "notes": "Use vidIQ and ChatGPT for metadata, ChatGPT for the thumbnail, and Google Flow for generation. Keep media files private; do not schedule a specific draft without its required approval."
       }
     ],
     "habits": [

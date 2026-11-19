@@ -35,6 +35,10 @@ The February 2027 role-change plan uses the blank, private intake and verificati
 
 Profile updates and public posts should be reviewed by Varun before submission or publication.
 
+## AI World 360 daily publishing
+
+The daily YouTube/Instagram checklist and per-video record template are in [research/ai-world-360-daily-workflow.md](research/ai-world-360-daily-workflow.md). This workflow is not evidence of channel access or completed uploads; each day's final exports and publication URLs must be recorded. A specific scheduled draft requires its own approval.
+
 ## Dairy farm supplier research
 
 The preliminary West Godavari solar, CCTV and shed-contractor shortlist, sources and quote checklist are in [research/supplier-shortlist-west-godavari.md](research/supplier-shortlist-west-godavari.md). Candidates are not endorsements; no vendor has been contacted or verified.
