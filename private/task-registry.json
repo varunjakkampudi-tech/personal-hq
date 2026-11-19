@@ -526,11 +526,11 @@
         "id": "task-41",
         "owner": "Varun",
         "source": "Gmail and GitHub Actions, 19 Nov 2026",
-        "nextAction": "Review current failure annotations and confirm owner-authorized next action before changing the FixHub24 main branch.",
+        "nextAction": "Review the two advisory records and affected dependency paths, assess a compatible remediation, and confirm project authorization before changing the FixHub24 main branch.",
         "title": "Review repeated FixHub24 main-branch CI failures",
         "area": "FixHub24",
         "status": "Not started",
-        "notes": "GitHub run 44498373031 failed the Dependency Vulnerability Audit on 19 Nov 2026 for main SHA 7ce251f8c253f5729156acf0d88953082140a37a. Review the audit details and project authorization before changing code."
+        "notes": "GitHub run 44498373031 failed the Dependency Vulnerability Audit on 19 Nov 2026 for main SHA 7ce251f8c253f5729156acf0d88953082140a37a. The audit reported high severity body-parser 2.0.0–2.3.0 denial-of-service exposure (GHSA-27r3-jxmh-p828) and moderate seroval 1.5.5–1.6.10 injection advisories (GHSA-9wx9-5pv9-3349 and GHSA-f86p-h4j2-7qgj); npm audit reported fixes available. Review dependency compatibility and project authorization before changing code."
       },
       {
         "id": "task-42",
@@ -547,11 +547,11 @@
         "id": "task-43",
         "owner": "Varun",
         "source": "Gmail, GitHub Actions notification 19 Nov 2026",
-        "nextAction": "Inspect the run's Services, integration, and browser suite failure annotations, then follow the active CareerScope stage authorization before any code change.",
+        "nextAction": "Inspect the ambiguous Playwright heading locator and search-run timestamp assertion, then follow the active CareerScope stage authorization before any code change.",
         "title": "Review new CareerScope CI failure on run 44492306240",
         "area": "CareerScope",
         "status": "Not started",
-        "notes": "Run for commit a620fca: Services, integration, and browser suites failed; quality gates and production image build succeeded. This is a review task, not permission to edit."
+        "notes": "Run 44492306240 for commit a620fca on codex/stage05-item515-source-health: quality gates and production image build passed, but the services/integration/browser job failed. Its final browser check hit a Playwright strict-mode violation because the Recent source outcomes heading locator matched 6 result panels while waiting for a search-run timestamp. Review the selector/test evidence and active stage authorization before any code change; this is a review task, not permission to edit."
       }
     ],
     "habits": [
