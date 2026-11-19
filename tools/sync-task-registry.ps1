@@ -80,6 +80,19 @@ $existingJson = if (Test-Path -LiteralPath $registryPath) {
 $sameData = $false
 if ($existingJson) {
     $existing = $existingJson | ConvertFrom-Json
+    $incomingTaskIds = [System.Collections.Generic.HashSet[string]]::new()
+    foreach ($task in $export.data.tasks) {
+        [void]$incomingTaskIds.Add([string]$task.id)
+    }
+    $missingExistingTaskCount = 0
+    foreach ($existingTask in $existing.data.tasks) {
+        if (-not $incomingTaskIds.Contains([string]$existingTask.id)) {
+            $missingExistingTaskCount++
+        }
+    }
+    if ($missingExistingTaskCount -gt 0) {
+        throw "The export omits $missingExistingTaskCount task(s) already in the private registry. Refusing to replace the full snapshot. Restore the complete private dashboard backup before syncing."
+    }
     $sameData = (($existing.data | ConvertTo-Json -Depth 50 -Compress) -eq ($export.data | ConvertTo-Json -Depth 50 -Compress))
 }
 if ($sameData) {
