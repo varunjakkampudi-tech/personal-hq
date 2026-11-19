@@ -381,6 +381,17 @@
         "status": "Not started"
       },
       {
+        "id": "task-34",
+        "owner": "Varun",
+        "source": "Personal HQ initial plan",
+        "nextAction": "Capture goals, schedule, current fitness, food preferences, and health constraints; see research/health-routine-starter.md.",
+        "title": "Personalize the gym and food routine after capturing health and schedule details",
+        "area": "Personal & health",
+        "due": "2026-11-29",
+        "status": "Not started",
+        "notes": "Starter guidance is general only. Do not set calorie targets, weight targets, supplements, or intense programming before the user's details are known."
+      },
+      {
         "id": "task-27",
         "owner": "Varun",
         "source": "Personal HQ initial plan",

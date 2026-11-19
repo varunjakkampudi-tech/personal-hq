@@ -25,6 +25,10 @@ Local browser edits do not sync to GitHub automatically. Sync the dashboard expo
 4. Tailor workout and food planning after goals, schedule, preferences and relevant health constraints are known.
 5. Agree a sustainable YouTube/Instagram publishing cadence and review workflow.
 
+## Personal health starter
+
+General, non-personalized routine guidance and the information needed to tailor it are in [research/health-routine-starter.md](research/health-routine-starter.md). No calorie, weight, supplement, or intensive exercise plan is assumed.
+
 Profile updates and public posts should be reviewed by Varun before submission or publication.
 
 ## Dairy farm supplier research
