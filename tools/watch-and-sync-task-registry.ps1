@@ -16,9 +16,12 @@ try {
     $syncedAt = [DateTimeOffset]::Parse($export.updatedAt).ToUniversalTime()
     $age = [DateTimeOffset]::UtcNow - $syncedAt
     if ($age.TotalMinutes -lt -5 -or $age.TotalHours -gt 24) { return }
+    $markerPath = Join-Path $logDirectory 'last-synced-export.txt'
+    if ((Test-Path -LiteralPath $markerPath) -and (Get-Content -LiteralPath $markerPath -Raw).Trim() -eq [string]$export.updatedAt) { return }
     $helperPath = Join-Path $PSScriptRoot 'sync-task-registry.ps1'
     & $helperPath -ExportPath $exportFile.FullName *> $null
     if ($LASTEXITCODE -ne 0) { throw 'sync helper failed' }
+    Set-Content -LiteralPath $markerPath -Value ([string]$export.updatedAt) -Encoding utf8
     Write-RunLog 'Fresh Personal HQ task export processed.'
 } catch {
     Write-RunLog 'Sync attempt failed; run the sync helper interactively to review and resolve it.'
