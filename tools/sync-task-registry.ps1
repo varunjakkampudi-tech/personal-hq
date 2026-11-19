@@ -58,13 +58,12 @@ foreach ($task in $export.data.tasks) {
 }
 
 $allJson = $export | ConvertTo-Json -Depth 50
-if ($allJson -match '(?<!\d)\d{12}(?!\d)' -or $allJson -match '\b[A-Z]{5}\d{4}[A-Z]\b') {
-    throw 'The export appears to contain a government identity number. Remove it before syncing.'
+if ($allJson -match '(?<!\d)\d{12}(?!\d)' -or $allJson -match '\b[A-Z]{5}\d{4}[A-Z]\b' -or $allJson -match '\b[A-Z0-9]{15}\b' -or $allJson -match '(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b' -or $allJson -match '(?<!\d)(?:\+?91[- .]?)?[6-9]\d{9}(?!\d)') {
+    throw 'The export appears to contain a government identifier, GSTIN, email address or phone number. Remove sensitive details before syncing to this public repository.'
 }
-
 $remoteUrl = (& git -C $repoRoot remote get-url origin 2>$null)
 if ($LASTEXITCODE -ne 0 -or $remoteUrl -notmatch '^https://github\.com/varunjakkampudi-tech/personal-hq\.git$') {
-    throw 'The origin remote is not the expected private Personal HQ GitHub repository.'
+    throw 'The origin remote is not the expected public Personal HQ GitHub repository.'
 }
 
 $branch = (& git -C $repoRoot branch --show-current)
@@ -91,7 +90,7 @@ if ($existingJson) {
         }
     }
     if ($missingExistingTaskCount -gt 0) {
-        throw "The export omits $missingExistingTaskCount task(s) already in the private registry. Refusing to replace the full snapshot. Restore the complete private dashboard backup before syncing."
+        throw "The export omits $missingExistingTaskCount task(s) already in the registry. Refusing to replace the full snapshot. Restore a complete dashboard backup before syncing."
     }
     $sameData = (($existing.data | ConvertTo-Json -Depth 50 -Compress) -eq ($export.data | ConvertTo-Json -Depth 50 -Compress))
 }
@@ -120,4 +119,4 @@ if ($LASTEXITCODE -ne 0) { throw 'Git could not commit the task registry.' }
 git -C $repoRoot push origin main
 if ($LASTEXITCODE -ne 0) { throw 'The local registry commit succeeded, but pushing to GitHub failed.' }
 
-Write-Output ("Synced " + $export.data.tasks.Count + " tasks to the private Personal HQ repository.")
+Write-Output ("Synced " + $export.data.tasks.Count + " tasks to the public Personal HQ repository.")
