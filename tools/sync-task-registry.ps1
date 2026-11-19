@@ -109,7 +109,7 @@ $publicTasksJson = $publicSnapshot | ConvertTo-Json -Depth 20
 $publicSeedContent = 'window.PERSONAL_HQ_SEED = ' + $publicTasksJson.Trim() + ';'
 
 function Sync-PagesTaskFeed {
-    $pagesRoot = 'C:\Users\Admin\Desktop\Personal-HQ-Pages'
+    $pagesRoot = Join-Path (Split-Path -Parent $repoRoot) 'Personal-HQ-Pages'
     if (-not (Test-Path -LiteralPath (Join-Path $pagesRoot '.git'))) { throw "The Personal HQ Pages repository was not found at $pagesRoot." }
     $pagesRemote = (& git -C $pagesRoot remote get-url origin 2>$null)
     if ($LASTEXITCODE -ne 0 -or $pagesRemote -notmatch '^https://github\.com/varunjakkampudi-tech/personal-hq-pages\.git$') { throw 'The Pages origin is not the expected public Personal HQ Pages repository.' }
