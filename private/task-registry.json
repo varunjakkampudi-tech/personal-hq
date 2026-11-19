@@ -590,24 +590,24 @@
       {
         "id": "task-48",
         "owner": "Varun",
-        "source": "vidIQ YouTube and Instagram schedule check 19 Nov 2026",
-        "nextAction": "After the scheduled time, check the YouTube Short and Instagram post reached completed/live status and record both URLs; carry forward whichever destination fails.",
+        "source": "vidIQ Instagram post status and authorized YouTube uploads, 19 Nov 2026 18:10 IST",
+        "nextAction": "Crosspost verified on both destinations: Instagram Reel completed with live URL; matching YouTube Short is public and processed (video ID mhTCwnHwdW4).",
         "title": "Verify Nov 19 AI World 360 crosspost delivery",
         "area": "AI World 360",
         "due": "2026-11-20",
-        "status": "Waiting",
-        "notes": "Both destinations show a 2026-11-19 18:00 IST schedule. The YouTube upload was private with scheduledPublishAt; Instagram was marked scheduled. Neither had a live URL at the 15:47 IST check."
+        "status": "Done",
+        "notes": "Instagram completed; live URL https://www.instagram.com/reel/Df7FYR9Cxeh/. Matching YouTube Short ID mhTCwnHwdW4 is public, processed, published 19 Nov 2026 12:30:31 UTC."
       },
       {
         "id": "task-49",
         "owner": "Varun",
-        "source": "vidIQ Instagram schedule and YouTube upload checks 19 Nov 2026",
-        "nextAction": "Confirm whether this item is intended for Instagram only; if it is a crosspost, review the exact video asset and metadata, then obtain approval before creating a YouTube schedule.",
+        "source": "vidIQ social-post list and authorized YouTube uploads, 19 Nov 2026 18:10 IST",
+        "nextAction": "After the matched 20 Nov 18:00 IST Instagram and YouTube schedules, verify both destination statuses, public visibility, and live URLs; carry forward any failure.",
         "title": "Resolve YouTube crosspost for Nov 20 scheduled Instagram video",
         "area": "AI World 360",
         "due": "2026-11-20",
         "status": "Waiting",
-        "notes": "An Instagram post is scheduled for 2026-11-20 18:00 IST. The latest read-only checks did not find a matching YouTube upload or scheduled YouTube row. No changes were made."
+        "notes": "Instagram post is scheduled for 20 Nov 2026 18:00 IST. Matching YouTube Short ID g-5ojhJY63g is processed and scheduled for 20 Nov 2026 12:30 UTC (18:00 IST), currently private pending publish. Verify both destinations after the schedule; no changes made."
       },
       {
         "id": "task-50",
