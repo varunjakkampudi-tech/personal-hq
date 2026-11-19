@@ -586,6 +586,28 @@
         "due": "2026-11-25",
         "status": "Not started",
         "notes": "Use vidIQ and ChatGPT for metadata, ChatGPT for the thumbnail, and Google Flow for generation. Keep media files private; do not schedule a specific draft without its required approval."
+      },
+      {
+        "id": "task-48",
+        "owner": "Varun",
+        "source": "vidIQ YouTube and Instagram schedule check 19 Nov 2026",
+        "nextAction": "After the scheduled time, check the YouTube Short and Instagram post reached completed/live status and record both URLs; carry forward whichever destination fails.",
+        "title": "Verify Nov 19 AI World 360 crosspost delivery",
+        "area": "AI World 360",
+        "due": "2026-11-20",
+        "status": "Waiting",
+        "notes": "Both destinations show a 2026-11-19 18:00 IST schedule. The YouTube upload was private with scheduledPublishAt; Instagram was marked scheduled. Neither had a live URL at the 15:47 IST check."
+      },
+      {
+        "id": "task-49",
+        "owner": "Varun",
+        "source": "vidIQ Instagram schedule and YouTube upload checks 19 Nov 2026",
+        "nextAction": "Confirm whether this item is intended for Instagram only; if it is a crosspost, review the exact video asset and metadata, then obtain approval before creating a YouTube schedule.",
+        "title": "Resolve YouTube crosspost for Nov 20 scheduled Instagram video",
+        "area": "AI World 360",
+        "due": "2026-11-20",
+        "status": "Waiting",
+        "notes": "An Instagram post is scheduled for 2026-11-20 18:00 IST. The latest read-only checks did not find a matching YouTube upload or scheduled YouTube row. No changes were made."
       }
     ],
     "habits": [
