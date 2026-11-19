@@ -60,12 +60,13 @@ CBIC Instruction 03/2025-GST says complete applications that are not flagged as 
 
 ## Official references
 
-**Research checked:** 19 November 2026. The 18 November corrigendum to Notification 05/2026-Central Tax was reviewed alongside the original notice.
+**Research checked:** 20 November 2026. The 18 November corrigendum to Notification 05/2026-Central Tax was reviewed alongside the original notice.
 
 - [GST Portal: Apply for Registration as a Normal Taxpayer](https://tutorial.gst.gov.in/userguide/registration/Apply_for_Registration_Normal_Taxpayer.htm) — current portal form flow and section list; it notes the post-grant bank-details step.
 - [GST Portal: Registration document checklist](https://tutorial.gst.gov.in/cbt/registration/gstregistration/course/story_content/external_files/GST_Registration_Document_Checklist.pdf) — portal-published example documents and upload formats.
 - [Gazette of India: Notification 05/2026-Central Tax (G.S.R. 919(E))](https://egazette.gov.in/WriteReadData/2026/277451.pdf) — CGST Amendment Rules 2026, including Rule 14B, generally effective 1 November 2026.
 - [Gazette of India: Corrigendum G.S.R. 1001(E), 18 November 2026](https://egazette.gov.in/WriteReadData/2026/278035.pdf) — English text corrections to Notification 05/2026-Central Tax.
+- [Gazette of India: Notification 38/2023-Central Tax (G.S.R. 590(E))](https://egazette.gov.in/WriteReadData/2023/247862.pdf) — amended CGST Rule 10A bank-account deadline: within 30 days of registration or before furnishing GSTR-1/IFF, whichever is earlier.
 - [CBIC: GST Registration Rules](https://cbic-gst.gov.in/gst-registration-rules.html) — FORM GST REG-01, application verification and registration-certificate rules.
 - [CBIC: Sectoral FAQs on e-commerce](https://cbic-gst.gov.in/sectoral-faq.html) — distinctions among platform operator, own-account seller and suppliers using an operator. These FAQs are informational; have the practitioner check amendments and notifications applicable at filing time.
 - [CBIC Instruction 03/2025-GST](https://cbic-gst.gov.in/pdf/ins-gst-no-03-2025.pdf) — principal-place evidence, risk-based physical verification, REG-03/REG-04 clarifications and processing windows. Verify live portal requirements and have a GST practitioner review the applicable route before filing.
