@@ -13,7 +13,7 @@ Most seeded tasks are **Not started**; two preliminary supplier-research items a
 
 ## Edit and privacy
 
-Use **Add a task** and the status dropdowns in the dashboard. Use **Backup** to download a JSON copy and **Restore** to load it on this device. Task and habit data still lives in this browser’s local storage; the backup file is the way to carry data between devices. The initial task set can be edited in the page’s `seed` data. No credentials, resume contents, or account tokens belong in this repository. Do not put private personal details here if you intend to publish the repository publicly.
+Use **Add a task** and the status dropdowns in the dashboard. When the local dashboard opens, it now merges newly seeded tasks and categories into existing browser data while preserving recorded task statuses. Use **Backup** to download a JSON copy and **Restore** to load it on this device. Task and habit data still lives in this browser’s local storage; the backup file is the way to carry data between devices. The initial task set can be edited in the page’s `seed` data. No credentials, resume contents, or account tokens belong in this repository. Do not put private personal details here if you intend to publish the repository publicly.
 
 Local browser edits do not sync to GitHub automatically. Sync the dashboard export into the private registry file and push the update when needed. The private repository is `https://github.com/varunjakkampudi-tech/personal-hq`; GitHub Pages is a separate public generic template.
 

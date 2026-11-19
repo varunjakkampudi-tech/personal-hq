@@ -471,6 +471,56 @@
         "due": "2026-12-10",
         "status": "Not started",
         "notes": "No accounts or profile submissions without Varun's review."
+      },
+      {
+        "id": "task-36",
+        "owner": "Varun",
+        "source": "Gmail sent requests, 18–19 Nov 2026",
+        "nextAction": "Check for replies about address-field behavior, storefront design and pricing, and branded contact email; consolidate any follow-up.",
+        "title": "Follow up on ValueMela storefront support requests",
+        "area": "ValueMela",
+        "status": "Waiting",
+        "notes": "No support reply found in the recent Gmail search as of 19 Nov 2026."
+      },
+      {
+        "id": "task-37",
+        "owner": "Varun",
+        "source": "Gmail, Cashfree email 19 Nov 2026",
+        "nextAction": "Review requested business information and determine the appropriate merchant-onboarding sequence; keep bank/KYC identifiers out of Personal HQ.",
+        "title": "Review Cashfree merchant onboarding request",
+        "area": "ValueMela",
+        "status": "Waiting",
+        "notes": "Cashfree says business details are awaiting completion; no deadline was stated."
+      },
+      {
+        "id": "task-38",
+        "owner": "Varun",
+        "source": "Gmail, Razorpay access notification 19 Nov 2026",
+        "nextAction": "Confirm in the Razorpay dashboard that Factori access and its scope are still needed; do not revoke automatically.",
+        "title": "Review Factori access grant to ValueMela's Razorpay account",
+        "area": "ValueMela",
+        "status": "Waiting",
+        "notes": "Razorpay notified that access was granted to retailing.factori.com."
+      },
+      {
+        "id": "task-39",
+        "owner": "Varun",
+        "source": "Gmail, Factori store launch confirmation 19 Nov 2026",
+        "nextAction": "Retain as a completed launch milestone.",
+        "title": "Factori confirmed ValueMela store launch",
+        "area": "ValueMela",
+        "status": "Done",
+        "notes": "Factori email confirms the store launched successfully on 19 Nov 2026."
+      },
+      {
+        "id": "task-40",
+        "owner": "Varun",
+        "source": "Gmail, CareerScope GitHub Actions notifications 19 Nov 2026",
+        "nextAction": "Check current run/job details for both failures and confirm project authorization before editing CareerScope.",
+        "title": "Review failed CareerScope CI runs for Stage 05 search work",
+        "area": "CareerScope",
+        "status": "Not started",
+        "notes": "Run 44480476991 failed for item 5.14 at commit 87703a5; run 44490477511 failed for item 5.15 at commit 82be764."
       }
     ],
     "habits": [
