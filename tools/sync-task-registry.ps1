@@ -11,6 +11,8 @@ $publicTasksRelativePath = 'life-system/tasks.json'
 $publicTasksPath = Join-Path $repoRoot $publicTasksRelativePath
 $publicSeedRelativePath = 'life-system/data.js'
 $publicSeedPath = Join-Path $repoRoot $publicSeedRelativePath
+$publicIndexRelativePath = 'life-system/index.html'
+$publicIndexPath = Join-Path $repoRoot $publicIndexRelativePath
 $publicHistoryRelativePath = 'life-system/history.json'
 $publicHistoryPath = Join-Path $repoRoot $publicHistoryRelativePath
 
@@ -172,6 +174,13 @@ $publicSnapshot = [ordered]@{
 }
 $publicTasksJson = $publicSnapshot | ConvertTo-Json -Depth 20
 $publicSeedContent = 'window.PERSONAL_HQ_SEED = ' + $publicTasksJson.Trim() + ';'
+$publicIndexContent = Get-Content -LiteralPath $publicIndexPath -Raw
+$seedVersion = $syncedAt.ToString('yyyyMMddHHmmss')
+$seedScriptPattern = '<script src="data\.js(?:\?v=[^"]*)?"></script>'
+if ($publicIndexContent -notmatch $seedScriptPattern) {
+    throw 'Could not find the expected task-seed script reference in life-system/index.html.'
+}
+$publicIndexContent = [regex]::Replace($publicIndexContent, $seedScriptPattern, ('<script src="data.js?v=' + $seedVersion + '"></script>'), 1)
 $publicHistoryDocument = [ordered]@{
     description = 'Public milestone summaries. Supporting evidence and private details are omitted.'
     events = $publicHistory
@@ -197,7 +206,7 @@ function Sync-PagesTaskFeed {
     if ($ahead -gt 0) {
         $subject = (& git -C $pagesRoot log -1 --format=%s)
         $paths = @(& git -C $pagesRoot diff-tree --no-commit-id --name-only -r HEAD)
-        $allowed = @('life-system/tasks.json', 'life-system/data.js', 'life-system/history.json')
+        $allowed = @('life-system/tasks.json', 'life-system/data.js', 'life-system/history.json', 'life-system/index.html')
         if ($LASTEXITCODE -ne 0 -or $ahead -ne 1 -or $subject -notmatch '^Sync task feed \d{4}-\d{2}-\d{2} \d{2}:\d{2}$' -or @($paths | Where-Object { $_ -notin $allowed }).Count -gt 0 -or $paths.Count -eq 0) { throw 'The Pages branch has unpublished commits outside a single task-feed update. Review it before syncing.' }
         $status = @(& git -C $pagesRoot status --porcelain --untracked-files=all)
         if ($LASTEXITCODE -ne 0 -or $status.Count -gt 0) { throw 'The Pages branch has uncommitted changes. Review them before retrying the task-feed push.' }
@@ -210,12 +219,13 @@ function Sync-PagesTaskFeed {
     Copy-Item -LiteralPath $publicTasksPath -Destination (Join-Path $pagesRoot 'life-system/tasks.json') -Force
     Copy-Item -LiteralPath $publicSeedPath -Destination (Join-Path $pagesRoot 'life-system/data.js') -Force
     Copy-Item -LiteralPath $publicHistoryPath -Destination (Join-Path $pagesRoot 'life-system/history.json') -Force
-    git -C $pagesRoot add -- 'life-system/tasks.json' 'life-system/data.js' 'life-system/history.json'
+    Copy-Item -LiteralPath $publicIndexPath -Destination (Join-Path $pagesRoot 'life-system/index.html') -Force
+    git -C $pagesRoot add -- 'life-system/tasks.json' 'life-system/data.js' 'life-system/history.json' 'life-system/index.html'
     if ($LASTEXITCODE -ne 0) { throw 'Git could not stage the sanitized task feed in the Pages repository.' }
     $staged = @(& git -C $pagesRoot diff --cached --name-only)
-    if ($LASTEXITCODE -ne 0 -or @($staged | Where-Object { $_ -notin @('life-system/tasks.json', 'life-system/data.js', 'life-system/history.json') }).Count -gt 0) { throw 'The Pages index contains paths outside the sanitized task feed; refusing to commit.' }
+    if ($LASTEXITCODE -ne 0 -or @($staged | Where-Object { $_ -notin @('life-system/tasks.json', 'life-system/data.js', 'life-system/history.json', 'life-system/index.html') }).Count -gt 0) { throw 'The Pages index contains paths outside the sanitized task feed; refusing to commit.' }
     if ($staged.Count -eq 0) { Write-Output 'The sanitized task feed already matches the Pages repository.'; return }
-    git -C $pagesRoot commit --only -m ('Sync task feed ' + (Get-Date -Format 'yyyy-MM-dd HH:mm')) -- 'life-system/tasks.json' 'life-system/data.js' 'life-system/history.json'
+    git -C $pagesRoot commit --only -m ('Sync task feed ' + (Get-Date -Format 'yyyy-MM-dd HH:mm')) -- 'life-system/tasks.json' 'life-system/data.js' 'life-system/history.json' 'life-system/index.html'
     if ($LASTEXITCODE -ne 0) { throw 'Git could not commit the sanitized task feed in the Pages repository.' }
     git -C $pagesRoot push origin main
     if ($LASTEXITCODE -ne 0) { throw 'The Pages task-feed commit succeeded locally, but pushing it failed.' }
@@ -257,6 +267,7 @@ if ($existingJson) {
 }
 $samePublicTasks = (Test-Path -LiteralPath $publicTasksPath) -and ((Get-Content -LiteralPath $publicTasksPath -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 20 -Compress) -eq ($publicSnapshot | ConvertTo-Json -Depth 20 -Compress))
 $samePublicSeed = (Test-Path -LiteralPath $publicSeedPath) -and ((Get-Content -LiteralPath $publicSeedPath -Raw).Trim() -eq $publicSeedContent)
+$samePublicIndex = (Get-Content -LiteralPath $publicIndexPath -Raw) -eq $publicIndexContent
 $samePublicHistory = (Test-Path -LiteralPath $publicHistoryPath) -and ((Get-Content -LiteralPath $publicHistoryPath -Raw | ConvertFrom-Json | ConvertTo-Json -Depth 20 -Compress) -eq ($publicHistoryDocument | ConvertTo-Json -Depth 20 -Compress))
 $backupDirectory = Join-Path $env:LOCALAPPDATA 'Personal-HQ\registry-backups'
 if ($registryChanged -and $existingJson) {
@@ -270,8 +281,9 @@ if ($registryChanged) { Set-Content -LiteralPath $registryPath -Value $allJson -
 if (-not $samePublicTasks) { Set-Content -LiteralPath $publicTasksPath -Value $publicTasksJson -Encoding utf8 }
 if (-not $samePublicSeed) { Set-Content -LiteralPath $publicSeedPath -Value $publicSeedContent -Encoding utf8 }
 if (-not $samePublicHistory) { Set-Content -LiteralPath $publicHistoryPath -Value $publicHistoryJson -Encoding utf8 }
+if (-not $samePublicIndex) { Set-Content -LiteralPath $publicIndexPath -Value $publicIndexContent -Encoding utf8 }
 
-if ($samePublicTasks -and $samePublicSeed -and $samePublicHistory) {
+if ($samePublicTasks -and $samePublicSeed -and $samePublicHistory -and $samePublicIndex) {
     $trackingCounts = (& git -C $repoRoot rev-list --left-right --count origin/main...HEAD)
     if ($LASTEXITCODE -ne 0) { throw 'Could not compare local main with origin/main before deciding whether to push.' }
     $counts = @($trackingCounts -split '\s+' | Where-Object { $_ -ne '' })
@@ -292,11 +304,11 @@ if ($samePublicTasks -and $samePublicSeed -and $samePublicHistory) {
     return
 }
 
-git -C $repoRoot add -- $publicTasksRelativePath $publicSeedRelativePath $publicHistoryRelativePath
+git -C $repoRoot add -- $publicTasksRelativePath $publicSeedRelativePath $publicHistoryRelativePath $publicIndexRelativePath
 if ($LASTEXITCODE -ne 0) { throw 'Git could not stage the sanitized public task feed.' }
 
 $commitMessage = 'Sync task registry ' + (Get-Date -Format 'yyyy-MM-dd HH:mm')
-git -C $repoRoot commit --only -m $commitMessage -- $publicTasksRelativePath $publicSeedRelativePath $publicHistoryRelativePath
+git -C $repoRoot commit --only -m $commitMessage -- $publicTasksRelativePath $publicSeedRelativePath $publicHistoryRelativePath $publicIndexRelativePath
 if ($LASTEXITCODE -ne 0) { throw 'Git could not commit the sanitized public task feed.' }
 
 git -C $repoRoot push origin main
