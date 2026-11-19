@@ -279,8 +279,8 @@
         "id": "task-17",
         "owner": "Varun",
         "source": "Personal HQ initial plan",
-        "nextAction": "Choose a realistic YouTube and Instagram publishing cadence",
-        "title": "Choose a realistic YouTube and Instagram publishing cadence",
+        "nextAction": "Define a daily idea-to-publish routine: vidIQ research/metadata, ChatGPT writing and thumbnail, Google Flow generation, edit, owner review, then publish to YouTube and Instagram. Carry unfinished items forward; do not schedule a draft without approval.",
+        "title": "Set up daily video publishing for YouTube and Instagram",
         "area": "AI World 360",
         "due": "2026-11-25",
         "status": "Not started"
@@ -460,6 +460,17 @@
         "area": "Life admin",
         "due": "2026-11-30",
         "status": "Not started"
+      },
+      {
+        "id": "task-35",
+        "owner": "Varun",
+        "source": "Personal HQ initial plan",
+        "nextAction": "After confirming target role families, compare relevant portals and verify current LinkedIn/resume profile setup, privacy controls, and duplicate-profile rules before account creation.",
+        "title": "Identify and verify additional job portals for target roles",
+        "area": "Career move",
+        "due": "2026-12-10",
+        "status": "Not started",
+        "notes": "No accounts or profile submissions without Varun's review."
       }
     ],
     "habits": [
@@ -472,8 +483,8 @@
         "note": "Even 25 minutes counts."
       },
       {
-        "name": "Plan one piece of content",
-        "note": "Idea, script, edit or publish."
+        "name": "Publish one video to YouTube + Instagram",
+        "note": "Keep the daily idea-to-edit pipeline moving; publish the final reviewed version to both channels. A saved draft alone does not approve scheduling."
       },
       {
         "name": "Close the day gently",
