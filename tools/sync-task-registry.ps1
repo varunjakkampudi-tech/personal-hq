@@ -18,7 +18,7 @@ if (-not $ExportPath) {
         Sort-Object LastWriteTime -Descending |
         Select-Object -First 1
     if (-not $latestExport) {
-        throw "No Personal HQ task export was found in $downloadsPath. Use Sync tasks in the dashboard first."
+        throw "No Personal HQ task export was found in $downloadsPath. Use Export tasks in the dashboard first."
     }
     $ExportPath = $latestExport.FullName
 }
@@ -33,7 +33,7 @@ if ($export.version -ne 1 -or -not $export.data -or -not ($export.data.tasks -is
     throw 'The selected file is not a supported Personal HQ export.'
 }
 if ($export.registryStatus -ne 'current-user-export') {
-    throw 'This export is not marked as a current dashboard export. Use the dashboard Sync tasks button.'
+    throw 'This export is not marked as a current dashboard export. Use the dashboard Export tasks button.'
 }
 if (-not $export.updatedAt) {
     throw 'The export has no verified sync timestamp.'
