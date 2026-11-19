@@ -113,6 +113,12 @@ foreach ($task in $export.data.tasks) {
     if ($null -ne $preservePrivateProperty) { $task.PSObject.Properties.Remove('preservePrivateNotes') }
 }
 
+if ($null -eq $export.PSObject.Properties['dashboardExportUpdatedAt']) {
+    $export | Add-Member -NotePropertyName dashboardExportUpdatedAt -NotePropertyValue $export.updatedAt
+} else {
+    $export.dashboardExportUpdatedAt = $export.updatedAt
+}
+
 $allJson = $export | ConvertTo-Json -Depth 50
 if ($allJson -match '(?<!\d)\d{12}(?!\d)' -or $allJson -match '\b[A-Z]{5}\d{4}[A-Z]\b' -or $allJson -match '\b[A-Z0-9]{15}\b' -or $allJson -match '(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b' -or $allJson -match '(?<!\d)(?:\+?91[- .]?)?[6-9]\d{9}(?!\d)') {
     throw 'The export appears to contain a government identifier, GSTIN, email address or phone number. Remove sensitive details before syncing to this public repository.'
@@ -158,6 +164,7 @@ $publicSnapshot = [ordered]@{
     generatedAt = $export.updatedAt
     sourceSnapshotStatus = 'current-user-export'
     sourceSnapshotUpdatedAt = $export.updatedAt
+    dashboardExportUpdatedAt = $export.updatedAt
     description = 'Public task snapshot. Personal notes and dashboard habit logs are not included.'
     areas = $publicAreas
     tasks = $publicTasks
