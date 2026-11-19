@@ -4,9 +4,9 @@ A local-first dashboard for projects, tasks, milestones and a flexible daily rou
 
 ## Current focus areas
 
-- Career move targeted for February 2027: resume, role direction, LinkedIn, Naukri, Indeed, Cutshort and other relevant profiles.
+- Career move targeted for February 2027: resume, role direction, LinkedIn, Naukri, Indeed, Cutshort and discovery of other relevant portals; verify each portal's current onboarding and privacy rules before creating profiles.
 - Dairy farm planning targeted for January 2027: start with 20 animals and preserve a path to 40; compare shed construction, solar and CCTV proposals.
-- CareerScope, AI World 360 Media (YouTube and Instagram), ValueMela, and personal health/routine.
+- CareerScope, AI World 360 Media daily publishing on YouTube and Instagram, ValueMela, and personal health/routine.
 - Other desktop projects and responsibilities are listed for status review: OraOne, the Godavari dairy guide, Family, FixHub24, LensMate, Training & learning, and Life admin.
 
 Most seeded tasks are **Not started**; two preliminary supplier-research items are **In progress** and explicitly lack vendor contact, quotes or verification. Project progress weights Done as 100%, In progress as 50%, Waiting as 25% and Not started as 0%. Seeded statuses are planning estimates and are not evidence of completed work.
@@ -23,7 +23,7 @@ Local browser edits do not sync to GitHub automatically. Sync the dashboard expo
 2. Capture farm location, utilities, land/site constraints, budget and decision maker.
 3. Add existing project priorities and authorized next steps.
 4. Tailor workout and food planning after goals, schedule, preferences and relevant health constraints are known.
-5. Agree a sustainable YouTube/Instagram publishing cadence and review workflow.
+5. Set a workable daily YouTube/Instagram production routine and review the final asset before each post or schedule activation.
 
 ## Personal health starter
 
