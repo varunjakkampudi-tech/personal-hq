@@ -39,6 +39,8 @@ Profile updates and public posts should be reviewed by Varun before submission o
 
 The preliminary West Godavari solar, CCTV and shed-contractor shortlist, sources and quote checklist are in [research/supplier-shortlist-west-godavari.md](research/supplier-shortlist-west-godavari.md). Candidates are not endorsements; no vendor has been contacted or verified.
 
+The phased 20-to-40-animal site, operating, compliance and commissioning gates are in [research/dairy-farm-readiness.md](research/dairy-farm-readiness.md). January 2027 remains a conditional target until the site, species, market and local requirements are verified.
+
 
 ## ValueMela GST planning
 

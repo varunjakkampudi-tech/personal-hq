@@ -227,11 +227,12 @@
         "id": "task-12",
         "owner": "Varun",
         "source": "Personal HQ initial plan",
-        "nextAction": "Write requirements brief for 20 cows, expandable to 40",
-        "title": "Write requirements brief for 20 cows, expandable to 40",
+        "nextAction": "Confirm cow, buffalo or mixed herd, then write a species-specific phase-one brief with a safe expansion path to 40.",
+        "title": "Write requirements brief for 20 animals, expandable to 40",
         "area": "Dairy farm",
         "due": "2026-12-07",
-        "status": "Not started"
+        "status": "Not started",
+        "notes": "Species is not confirmed. Do not size the shed, feed plan or equipment from a cow-only assumption."
       },
       {
         "id": "task-13",
@@ -563,6 +564,17 @@
         "due": "2026-11-30",
         "status": "Not started",
         "notes": "Use research/career-transition-workbook.md. Blank workbook only; do not invent resume claims or enter account credentials."
+      },
+      {
+        "id": "task-45",
+        "owner": "Varun",
+        "source": "Personal HQ dairy launch plan",
+        "nextAction": "Use research/dairy-farm-readiness.md to capture the site and herd inputs and prepare local authority, veterinary, and buyer questions before requesting final designs.",
+        "title": "Complete dairy farm readiness gate checklist",
+        "area": "Dairy farm",
+        "due": "2026-12-02",
+        "status": "Not started",
+        "notes": "January 2027 is a conditional target. Resolve location, species, sales route, permissions, water, power, and cash flow before contracting or buying animals."
       }
     ],
     "habits": [
