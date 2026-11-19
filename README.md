@@ -15,7 +15,7 @@ Most seeded tasks are **Not started**; two preliminary supplier-research items a
 
 Use **Add a task** and the status dropdowns in the dashboard. Use **Backup** to download a JSON copy and **Restore** to load it on this device. Task and habit data still lives in this browser’s local storage; the backup file is the way to carry data between devices. The initial task set can be edited in the page’s `seed` data. No credentials, resume contents, or account tokens belong in this repository. Do not put private personal details here if you intend to publish the repository publicly.
 
-Local edits do not sync to GitHub. To publish, create a private repository named `personal-hq` in GitHub Desktop, then add this folder as its working copy or push it as a new repository. The connected GitHub integration available in this session can edit files in existing repositories, but did not expose a create-repository action.
+Local browser edits do not sync to GitHub automatically. Sync the dashboard export into the private registry file and push the update when needed. The private repository is `https://github.com/varunjakkampudi-tech/personal-hq`; GitHub Pages is a separate public generic template.
 
 ## Next setup steps
 
@@ -39,6 +39,6 @@ The review-first GST checklist is in [research/valuemela-gst-registration.md](re
 
 ## Private task registry for daily review
 
-`private/task-registry.json` is the private, machine-readable task snapshot used by the daily review when available. It is excluded from Git. The dashboard itself still uses browser local storage. After changing task statuses, choose **Sync tasks** and replace `private/task-registry.json` with the downloaded dated JSON export. The daily review must state that reconciliation is pending if this snapshot is stale or unavailable. Do not put the private registry in the public Pages repository.
+`private/task-registry.json` is the private, machine-readable task snapshot used by the daily review when available. It is committed only in this private GitHub repository and must never be copied to the public Pages repository. The dashboard itself still uses browser local storage. After changing task statuses, choose **Sync tasks** and replace `private/task-registry.json` with the downloaded dated JSON export. The daily review must state that reconciliation is pending if this snapshot is stale or unavailable. Do not put the private registry in the public Pages repository.
 
 Task records include an owner, source and next action. Dates and completion states are only meaningful when you update them from evidence. The initial registry is a starter copy of the dashboard seed, not proof that any task has been completed. It is marked as unreconciled until replaced by a Sync tasks export. Current exports include `registryStatus: current-user-export`.
