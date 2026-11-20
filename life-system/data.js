@@ -1,8 +1,8 @@
 window.PERSONAL_HQ_SEED = {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-20T04:53:54Z",
+  "generatedAt": "2026-11-20T06:55:31.787Z",
   "sourceSnapshotStatus": "merged-desktop-task-update",
-  "sourceSnapshotUpdatedAt": "2026-11-20T04:53:54Z",
+  "sourceSnapshotUpdatedAt": "2026-11-20T06:55:31.787Z",
   "dashboardExportUpdatedAt": "2026-11-20T01:18:27.066Z",
   "description": "Public task snapshot. Personal notes and dashboard habit logs are not included.",
   "areas": [
@@ -187,7 +187,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "ValueMela",
       "due": "2026-11-25",
       "status": "Not started",
-      "nextAction": "Record the legal entity and state, own-site vs marketplace sales, who invoices/collects/supplies, product and shipping states, turnover, and whether a section 52 TCS e-commerce operator warehouse is involved; keep identifiers private and ask the CA to assess Rule 14B eligibility."
+      "nextAction": "Record entity/state, first potentially liable event/date, FY turnover, sales/invoice/payment/dispatch roles, stock locations/owners, pending pre-GSTIN orders and section 52 operator status; keep evidence private for CA."
     },
     {
       "id": "task-21",
@@ -195,7 +195,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "ValueMela",
       "due": "2026-11-28",
       "status": "Not started",
-      "nextAction": "Send the completed business-model summary and open questions from the private GST intake to a qualified GST practitioner; obtain a dated written registration and compliance route with current official sources before preparing or filing."
+      "nextAction": "Get written, sourced CA conclusions on liability/history, pre-GSTIN orders, stock/state registrations, platform/TCS, invoices, bank verification, e-way bills, GSTR-2B/ITC, e-invoice and returns."
     },
     {
       "id": "task-22",
@@ -203,7 +203,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "ValueMela",
       "due": "2026-12-02",
       "status": "Not started",
-      "nextAction": "After written practitioner determination, verify the live GST Portal application requirements and securely tick only the applicable entity, signatory, premises, goods/services and state-specific documents in the private intake."
+      "nextAction": "After CA route, check live REG-01 documents for entity, signatory, premises/stock locations and supplies; privately track bank entry and successful portal-verification deadline."
     },
     {
       "id": "task-23",
@@ -211,7 +211,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "ValueMela",
       "due": "2026-12-08",
       "status": "Not started",
-      "nextAction": "After the CA confirms the route and the secure checklist is reviewed, the owner verifies final application details and submits through the official GST Portal; keep proof of submission privately."
+      "nextAction": "After CA route, historical/pre-GSTIN policy and secure checklist, review exact REG-01 values and explicitly authorize submission; retain proof and track portal deadlines."
     },
     {
       "id": "task-24",
@@ -219,7 +219,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "ValueMela",
       "due": "2026-12-15",
       "status": "Not started",
-      "nextAction": "After any registration is granted, verify the certificate privately, then validate ValueMela invoice settings, order/refund/payment exports and CA-confirmed return calendar before treating operations as ready."
+      "nextAction": "After grant, verify certificate and bank portal status by CA deadline; validate invoices, exports, e-way bill owner, GSTR-2B/ITC, conditional e-invoice and filing calendar."
     },
     {
       "id": "task-25",
@@ -411,7 +411,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "AI World 360",
       "due": "2026-11-20",
       "status": "Waiting",
-      "nextAction": "Compare the exact approved media on both destinations; reconcile YouTube status with vidIQ; record live URLs or failure. Matching times do not prove a crosspost."
+      "nextAction": "Read-only vidIQ check on 2026-11-20: Instagram is scheduled for 18:00 IST and YouTube remains a draft, so a completed crosspost is not established. Review the exact same approved media on both destinations and reconcile YouTube status; record live URLs or failure. Do not change either destination without approval for the specific action."
     },
     {
       "id": "task-50",
@@ -507,15 +507,15 @@ window.PERSONAL_HQ_SEED = {
       "area": "Life admin",
       "due": "",
       "status": "Waiting",
-      "nextAction": "The private registry and sanitized feed have 72 matching task IDs, titles, areas, dates and statuses. Chrome also shows 72 tasks, but no fresh dashboard export has confirmed its locally saved statuses; export and reconcile before marking this check done."
+      "nextAction": "Registry and live feed now have 73 task IDs; Chrome/email snapshot was 72. Export a fresh 73-task snapshot from the current browser, compare statuses before syncing, and preserve unverified local values."
     },
     {
       "id": "task-53",
       "title": "Verify daily 9 AM IST task email delivery",
       "area": "Life admin",
       "due": "2026-11-20",
-      "status": "Waiting",
-      "nextAction": "Gmail confirms the 20 Nov summary was sent at 09:05 IST and only today's matching summary remains in Inbox. The dashboard still records Waiting; update that status after safe UI access. Do not resend today's email."
+      "status": "Done",
+      "nextAction": "Verified one 20 Nov summary in Inbox at 09:05 IST; no older matching summaries remain there. Do not resend; reconcile the browser snapshot separately."
     },
     {
       "id": "7af070e5-cb39-4e9a-96e6-ec4046160286",
@@ -563,7 +563,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "ValueMela",
       "due": "",
       "status": "Not started",
-      "nextAction": "After the CA confirms registration and applicable returns, define the filing-period checklist: reconcile orders, invoices, cancellations, refunds/credit notes, payment settlements, bank receipts, books and applicable GST portal data; track exceptions; obtain owner approval of final figures before filing and retain acknowledgements."
+      "nextAction": "After CA confirms liability, registrations and returns, reconcile sales/invoices, dispatches, refunds/notes, settlements, bank/books, supplier records and GSTR-2B; review ITC/EWB/e-invoice controls before filing."
     },
     {
       "id": "task-57",
@@ -571,7 +571,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "AI World 360",
       "due": "2026-11-20",
       "status": "Waiting",
-      "nextAction": "NO-GO for content approval until the exact scheduled Instagram media, provenance and brief fit are verified. Keep both destinations unchanged pending the owner decision."
+      "nextAction": "Read-only vidIQ check on 2026-11-20: Instagram destination remains scheduled for 18:00 IST; YouTube destination remains a draft. Each destination has one video; YouTube also has one image. The connector does not expose the actual media or provenance here. Keep the schedule and draft unchanged; retain NO-GO until exact assets and provenance are reviewed and owner choice is recorded."
     },
     {
       "id": "task-58",
@@ -593,10 +593,9 @@ window.PERSONAL_HQ_SEED = {
       "id": "task-60",
       "title": "Enable private Personal HQ sync across devices",
       "area": "Life admin",
-      "due": null,
+      "due": "",
       "status": "In progress",
-      "nextAction": "Build the app sign-in and revisioned task RPC path; keep routines local until their writes are conflict-safe. Then set up the owner project, disable public sign-ups and configure its publishable key.",
-      "createdAt": "2026-11-20T02:45:00Z"
+      "nextAction": "Build the app sign-in and revisioned task RPC path; keep routines local until their writes are conflict-safe. Then set up the owner project, disable public sign-ups and configure its publishable key."
     },
     {
       "id": "task-61",
@@ -604,7 +603,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "Life admin",
       "due": "",
       "status": "In progress",
-      "nextAction": "Review the desktop and 390px mobile preview plus the two-file diff; approve the Pages release or request corrections. Candidate app code remains local-only."
+      "nextAction": "Responsive UI checks are complete at 1440px, 390px, 320px and a 195px CSS viewport; 195px is not actual 200% browser zoom. Keyboard focus, accessible navigation names, mobile touch sizing and local save retry were checked. Actual browser zoom and screen-reader output remain unverified. The existing user request explicitly authorizes publishing the public GitHub repo and Pages site. Next: release this reviewed UI and the current sanitized 73-task feed, then verify the live Pages deployment."
     }
   ],
   "history": [
