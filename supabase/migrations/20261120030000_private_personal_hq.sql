@@ -198,4 +198,3 @@ grant select, insert, update on public.personal_hq_tasks to authenticated;
 grant select, insert, update, delete on public.personal_hq_habits to authenticated;
 grant select, insert, update, delete on public.personal_hq_habit_logs to authenticated;
 grant select, insert, update, delete on public.personal_hq_moments to authenticated;
-
