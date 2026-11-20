@@ -67,6 +67,21 @@ $age = [DateTimeOffset]::UtcNow - $syncedAt
 if ($age.TotalMinutes -lt -5 -or (-not $PublishMergedRegistry -and $age.TotalHours -gt 24)) {
     throw 'The dashboard export timestamp is in the future or older than 24 hours. Create a fresh export.'
 }
+if (-not $PublishMergedRegistry -and (Test-Path -LiteralPath $registryPath)) {
+    $currentRegistry = Get-Content -LiteralPath $registryPath -Raw | ConvertFrom-Json
+    if ($currentRegistry.registryStatus -eq 'merged-desktop-task-update' -and $currentRegistry.updatedAt) {
+        if ($currentRegistry.updatedAt -is [DateTimeOffset]) {
+            $registryUpdatedAt = $currentRegistry.updatedAt.ToUniversalTime()
+        } elseif ($currentRegistry.updatedAt -is [DateTime]) {
+            $registryUpdatedAt = [DateTimeOffset]::new($currentRegistry.updatedAt).ToUniversalTime()
+        } else {
+            $registryUpdatedAt = [DateTimeOffset]::Parse([string]$currentRegistry.updatedAt, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::AssumeUniversal).ToUniversalTime()
+        }
+        if ($syncedAt -le $registryUpdatedAt) {
+            throw 'This dashboard export predates the latest merged task registry. Create a fresh export before syncing so newer task updates are preserved.'
+        }
+    }
+}
 if ($export.data.tasks.Count -eq 0) {
     throw 'The export contains no tasks; refusing to replace the existing registry with an empty task list.'
 }

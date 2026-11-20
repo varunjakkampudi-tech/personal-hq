@@ -23,11 +23,25 @@ try {
     $age = [DateTimeOffset]::UtcNow - $syncedAt
     if ($age.TotalMinutes -lt -5 -or $age.TotalHours -gt 24) { return }
     $exportTimestamp = $syncedAt.ToString('o')
+    $registryPath = Join-Path $repoRoot 'private\task-registry.json'
+    if (Test-Path -LiteralPath $registryPath) {
+        $registry = Get-Content -LiteralPath $registryPath -Raw | ConvertFrom-Json
+        if ($registry.registryStatus -eq 'merged-desktop-task-update' -and $registry.updatedAt) {
+            if ($registry.updatedAt -is [DateTimeOffset]) {
+                $registryUpdatedAt = $registry.updatedAt.ToUniversalTime()
+            } elseif ($registry.updatedAt -is [DateTime]) {
+                $registryUpdatedAt = [DateTimeOffset]::new($registry.updatedAt).ToUniversalTime()
+            } else {
+                $registryUpdatedAt = [DateTimeOffset]::Parse([string]$registry.updatedAt, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::AssumeUniversal).ToUniversalTime()
+            }
+            if ($syncedAt -le $registryUpdatedAt) { return }
+        }
+    }
     $markerPath = Join-Path $logDirectory 'last-synced-export.txt'
     if ((Test-Path -LiteralPath $markerPath) -and (Get-Content -LiteralPath $markerPath -Raw).Trim() -eq $exportTimestamp) { return }
     $helperPath = Join-Path $PSScriptRoot 'sync-task-registry.ps1'
     & $helperPath -ExportPath $exportFile.FullName *> $null
-    if ($LASTEXITCODE -ne 0) { throw 'sync helper failed' }
+    if (-not $?) { throw 'sync helper failed' }
     Set-Content -LiteralPath $markerPath -Value $exportTimestamp -Encoding utf8
     Write-RunLog 'Fresh Personal HQ task export processed.'
 } catch {
