@@ -1,6 +1,6 @@
 window.PERSONAL_HQ_SEED = {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-20T17:07:41.2443747+05:30",
+  "generatedAt": "2026-11-20T11:51:12.2564884+00:00",
   "sourceSnapshotStatus": "merged-desktop-task-update",
   "sourceSnapshotUpdatedAt": "2026-11-20T01:18:27.066Z",
   "tasks": [
@@ -10,7 +10,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "Career move",
       "due": "2026-11-25",
       "status": "In progress",
-      "nextAction": "Full-stack target confirmed; verify employment chronology, backend ownership and project evidence; then draft a full-stack resume review copy and verify portal links."
+      "nextAction": "Full-stack engineer target is set. Review copy is prepared privately with chronology and project-claim verification gates; next validate experience, project contribution, skills, metrics and credentials against evidence before finalizing resume or profiles."
     },
     {
       "id": "task-1",
@@ -394,7 +394,7 @@ window.PERSONAL_HQ_SEED = {
       "area": "AI World 360",
       "due": "2026-11-20",
       "status": "Waiting",
-      "nextAction": "The 20 Nov 18:00 IST slot has passed, but publication is unresolved: vidIQ still reports Instagram scheduled (0 attempts, no URL), and authorized YouTube listing reports g-5ojhJY63g private/processed with no actual start. Verify each platform directly; do not mark posted or failed from scheduler state alone. Exact asset, provenance, rights and owner approval remain open. Do not change either schedule or visibility."
+      "nextAction": "As of 20 Nov 2026 after 18:00 IST, Instagram publication 3855ab5a-3651-4623-a16f-3e07b88c5dc8 remains scheduled in vidIQ with 0 attempts and no URL/completion. Authorized YouTube listing still shows g-5ojhJY63g private/processed, scheduled for 12:30Z, no actual start and 0 views. Neither publication nor platform failure is established. Verify directly in each platform console; do not change content, schedule or visibility without asset-specific rights/approval review."
     },
     {
       "id": "task-50",
@@ -554,15 +554,15 @@ window.PERSONAL_HQ_SEED = {
       "area": "AI World 360",
       "due": "2026-11-20",
       "status": "Waiting",
-      "nextAction": "P0 release gate before 20 Nov 18:00 IST: Instagram is scheduled and the matching YouTube Short remains private/processed with the same scheduled time. Exact media, provenance/rights, fit to the approved brief and asset-specific owner approval remain unverified. Do not edit or cancel the schedules; check both destinations after 18:00 IST and record a live URL, failure or unresolved state."
+      "nextAction": "Post-slot release check remains unresolved. At 20 Nov 2026 after 18:00 IST, Instagram is still reported scheduled with 0 attempts/no URL; YouTube Short g-5ojhJY63g remains private/processed with no actual start and 0 views. Scheduler/API state does not prove publication or failure. Verify directly in platform consoles and review exact media, provenance, rights, approved brief fit, and owner approval before any new publication action; do not edit, cancel or change visibility."
     },
     {
       "id": "task-58",
       "title": "Run the weekly cross-project priorities and capacity review",
       "area": "Life admin",
       "due": "2026-11-22",
-      "status": "Not started",
-      "nextAction": "Weekly, review priorities, blockers, dependencies, deadlines and capacity; record decisions, task IDs, owner, next action/review date and advance/pause/defer choices privately."
+      "status": "In progress",
+      "nextAction": "Weekly review recorded evidence-backed dependencies across career, ValueMela GST, dairy planning, AI World 360, CareerScope, and Personal HQ reconciliation. Owner capacity, available funding and relative priorities remain unknown; confirm them before making cross-project commitments. Next review target: 27 Nov 2026."
     },
     {
       "id": "task-59",
@@ -643,6 +643,22 @@ window.PERSONAL_HQ_SEED = {
       "due": null,
       "status": "Not started",
       "nextAction": "Privately track committed spend, estimates, recurring costs and available reserves across active projects. Review liquidity monthly with task-58; require owner approval before major commitments. Keep figures private."
+    },
+    {
+      "id": "task-69",
+      "title": "Decide ValueMela storefront UI path after Factori customization limitation",
+      "area": "ValueMela",
+      "due": "",
+      "status": "Waiting",
+      "nextAction": "Factori support says storefront frontend changes are currently unavailable. Decide whether to continue with the current template, revisit if the feature becomes available, or assess an alternative storefront. Before migration, compare catalog/order continuity, payment and settlement, customer support, domain, privacy, tax/GST and implementation costs; do not change platform/settings until owner decision."
+    },
+    {
+      "id": "task-70",
+      "title": "Resolve ValueMela customer address form State and District selectors",
+      "area": "ValueMela",
+      "due": "",
+      "status": "Waiting",
+      "nextAction": "Factori support says they attempted to call and asks for a convenient time about disabled State and City/District selectors in the customer address form. Provide an available contact window or request written setup guidance; do not guess that PINCODE-first is the intended flow. Verify the corrected form without saving any customer address."
     }
   ],
   "history": [
