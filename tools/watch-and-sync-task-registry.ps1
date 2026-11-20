@@ -7,12 +7,13 @@ New-Item -ItemType Directory -Path $logDirectory -Force | Out-Null
 function Write-RunLog([string]$message) {
     Add-Content -LiteralPath $logPath -Value ((Get-Date -Format 'yyyy-MM-dd HH:mm:ss zzz') + ' ' + $message) -Encoding utf8
 }
+$skipReason = $null
 try {
     $exportFile = Get-ChildItem -LiteralPath $downloadsPath -Filter 'personal-hq-task-registry-*.json' -File -ErrorAction SilentlyContinue |
         Sort-Object LastWriteTime -Descending | Select-Object -First 1
-    if (-not $exportFile) { return }
+    if (-not $exportFile) { $skipReason = 'No task export found'; return }
     $export = Get-Content -LiteralPath $exportFile.FullName -Raw | ConvertFrom-Json
-    if ($export.registryStatus -ne 'current-user-export' -or -not $export.updatedAt) { return }
+    if ($export.registryStatus -ne 'current-user-export' -or -not $export.updatedAt) { $skipReason = 'Latest file is not a timestamped dashboard export'; return }
     if ($export.updatedAt -is [DateTimeOffset]) {
         $syncedAt = $export.updatedAt.ToUniversalTime()
     } elseif ($export.updatedAt -is [DateTime]) {
@@ -21,7 +22,8 @@ try {
         $syncedAt = [DateTimeOffset]::Parse([string]$export.updatedAt, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::AssumeUniversal).ToUniversalTime()
     }
     $age = [DateTimeOffset]::UtcNow - $syncedAt
-    if ($age.TotalMinutes -lt -5 -or $age.TotalHours -gt 24) { return }
+    if ($age.TotalMinutes -lt -5) { $skipReason = 'Dashboard export timestamp is in the future'; return }
+    if ($age.TotalHours -gt 24) { $skipReason = 'Dashboard export is older than 24 hours'; return }
     $exportTimestamp = $syncedAt.ToString('o')
     $registryPath = Join-Path $repoRoot 'private\task-registry.json'
     if (Test-Path -LiteralPath $registryPath) {
@@ -34,16 +36,18 @@ try {
             } else {
                 $registryUpdatedAt = [DateTimeOffset]::Parse([string]$registry.updatedAt, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::AssumeUniversal).ToUniversalTime()
             }
-            if ($syncedAt -le $registryUpdatedAt) { return }
+            if ($syncedAt -le $registryUpdatedAt) { $skipReason = 'Dashboard export predates the merged task registry'; return }
         }
     }
     $markerPath = Join-Path $logDirectory 'last-synced-export.txt'
-    if ((Test-Path -LiteralPath $markerPath) -and (Get-Content -LiteralPath $markerPath -Raw).Trim() -eq $exportTimestamp) { return }
+    if ((Test-Path -LiteralPath $markerPath) -and (Get-Content -LiteralPath $markerPath -Raw).Trim() -eq $exportTimestamp) { $skipReason = 'Dashboard export was already processed'; return }
     $helperPath = Join-Path $PSScriptRoot 'sync-task-registry.ps1'
-    & $helperPath -ExportPath $exportFile.FullName *> $null
-    if (-not $?) { throw 'sync helper failed' }
+    $helperOutput = @(& $helperPath -ExportPath $exportFile.FullName 2>&1 -ErrorVariable helperErrors)
+    if ($helperErrors.Count -gt 0) { throw (($helperErrors | ForEach-Object { $_.ToString() }) -join ' ') }
     Set-Content -LiteralPath $markerPath -Value $exportTimestamp -Encoding utf8
-    Write-RunLog 'Fresh Personal HQ task export processed.'
+    Write-RunLog ('Fresh Personal HQ task export processed: ' + (($helperOutput | ForEach-Object { $_.ToString() }) -join ' '))
 } catch {
-    Write-RunLog 'Sync attempt failed; run the sync helper interactively to review and resolve it.'
+    Write-RunLog ('Sync attempt failed: ' + $_.Exception.Message)
+} finally {
+    if ($skipReason) { Write-RunLog ('No sync performed: ' + $skipReason) }
 }
