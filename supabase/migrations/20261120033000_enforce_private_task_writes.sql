@@ -210,4 +210,3 @@ revoke insert, update, delete on public.personal_hq_tasks,
   public.personal_hq_moments from anon, authenticated;
 grant select on public.personal_hq_tasks, public.personal_hq_habits,
   public.personal_hq_habit_logs, public.personal_hq_moments to authenticated;
-
