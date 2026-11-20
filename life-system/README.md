@@ -21,3 +21,5 @@ Open `index.html` in Chrome or use the GitHub Pages site. The dashboard supports
 - [Life log](../life-log.html)
 
 Resume/profile source files, real farm/site records, customer information and health details belong in a private, access-controlled location, not this public repository.
+
+On GitHub Pages, the dashboard silently merges the latest public task feed when it opens. It adds newly published tasks and refreshes supported task guidance while preserving browser statuses, notes and browser-only tasks. This is a sanitized one-way metadata update; private browser edits still do not synchronize across devices.
