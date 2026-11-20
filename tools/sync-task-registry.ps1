@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
-    [string]$ExportPath
+    [string]$ExportPath,
+    [switch]$PublishMergedRegistry
 )
 
 $ErrorActionPreference = 'Stop'
@@ -16,27 +17,39 @@ $publicIndexPath = Join-Path $repoRoot $publicIndexRelativePath
 $publicHistoryRelativePath = 'life-system/history.json'
 $publicHistoryPath = Join-Path $repoRoot $publicHistoryRelativePath
 
-if (-not $ExportPath) {
-    $downloadsPath = Join-Path $env:USERPROFILE 'Downloads'
-    $latestExport = Get-ChildItem -LiteralPath $downloadsPath -Filter 'personal-hq-task-registry-*.json' -File |
-        Sort-Object LastWriteTime -Descending |
-        Select-Object -First 1
-    if (-not $latestExport) {
-        throw "No Personal HQ task export was found in $downloadsPath. Use Export tasks in the dashboard first."
+if ($PublishMergedRegistry) {
+    if ($ExportPath) { throw 'Use either -PublishMergedRegistry or -ExportPath, not both.' }
+    if (-not (Test-Path -LiteralPath $registryPath)) { throw 'The private task registry was not found.' }
+    $export = Get-Content -LiteralPath $registryPath -Raw | ConvertFrom-Json
+    if ($export.registryStatus -ne 'merged-desktop-task-update') {
+        throw 'The private registry is not marked as merged-desktop-task-update. Use the normal fresh-export sync path.'
     }
-    $ExportPath = $latestExport.FullName
-}
+    if (-not $export.dashboardExportUpdatedAt) {
+        throw 'The private registry has no recorded full dashboard export timestamp; refusing to publish merged status.'
+    }
+} else {
+    if (-not $ExportPath) {
+        $downloadsPath = Join-Path $env:USERPROFILE 'Downloads'
+        $latestExport = Get-ChildItem -LiteralPath $downloadsPath -Filter 'personal-hq-task-registry-*.json' -File |
+            Sort-Object LastWriteTime -Descending |
+            Select-Object -First 1
+        if (-not $latestExport) {
+            throw "No Personal HQ task export was found in $downloadsPath. Use Export tasks in the dashboard first."
+        }
+        $ExportPath = $latestExport.FullName
+    }
 
-$sourcePath = (Resolve-Path -LiteralPath $ExportPath).Path
-if ($sourcePath -eq $registryPath) {
-    throw 'Choose the downloaded dashboard export, not the registry destination.'
-}
+    $sourcePath = (Resolve-Path -LiteralPath $ExportPath).Path
+    if ($sourcePath -eq $registryPath) {
+        throw 'Choose the downloaded dashboard export, not the registry destination.'
+    }
 
-$export = Get-Content -LiteralPath $sourcePath -Raw | ConvertFrom-Json
+    $export = Get-Content -LiteralPath $sourcePath -Raw | ConvertFrom-Json
+}
 if ($export.version -ne 1 -or -not $export.data -or -not ($export.data.tasks -is [System.Array])) {
     throw 'The selected file is not a supported Personal HQ export.'
 }
-if ($export.registryStatus -ne 'current-user-export') {
+if (-not $PublishMergedRegistry -and $export.registryStatus -ne 'current-user-export') {
     throw 'This export is not marked as a current dashboard export. Use the dashboard Export tasks button.'
 }
 if (-not $export.updatedAt) {
@@ -51,7 +64,7 @@ if ($export.updatedAt -is [DateTimeOffset]) {
     $syncedAt = [DateTimeOffset]::Parse([string]$export.updatedAt, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::AssumeUniversal).ToUniversalTime()
 }
 $age = [DateTimeOffset]::UtcNow - $syncedAt
-if ($age.TotalMinutes -lt -5 -or $age.TotalHours -gt 24) {
+if ($age.TotalMinutes -lt -5 -or (-not $PublishMergedRegistry -and $age.TotalHours -gt 24)) {
     throw 'The dashboard export timestamp is in the future or older than 24 hours. Create a fresh export.'
 }
 if ($export.data.tasks.Count -eq 0) {
@@ -115,16 +128,11 @@ foreach ($task in $export.data.tasks) {
     if ($null -ne $preservePrivateProperty) { $task.PSObject.Properties.Remove('preservePrivateNotes') }
 }
 
-if ($null -eq $export.PSObject.Properties['dashboardExportUpdatedAt']) {
-    $export | Add-Member -NotePropertyName dashboardExportUpdatedAt -NotePropertyValue $export.updatedAt
-} else {
+$restrictedDataPattern = '(?<!\d)\d{12}(?!\d)|\b[A-Z]{5}\d{4}[A-Z]\b|\b[A-Z0-9]{15}\b|(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b|(?<!\d)(?:\+?91[- .]?)?[6-9]\d{9}(?!\d)'
+if (-not $PublishMergedRegistry) {
     $export.dashboardExportUpdatedAt = $export.updatedAt
 }
-
 $allJson = $export | ConvertTo-Json -Depth 50
-if ($allJson -match '(?<!\d)\d{12}(?!\d)' -or $allJson -match '\b[A-Z]{5}\d{4}[A-Z]\b' -or $allJson -match '\b[A-Z0-9]{15}\b' -or $allJson -match '(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b' -or $allJson -match '(?<!\d)(?:\+?91[- .]?)?[6-9]\d{9}(?!\d)') {
-    throw 'The export appears to contain a government identifier, GSTIN, email address or phone number. Remove sensitive details before syncing to this public repository.'
-}
 
 $publicTasks = @(
     foreach ($task in $export.data.tasks) {
@@ -164,15 +172,18 @@ if ($publicAreas.Count -eq 0) {
 $publicSnapshot = [ordered]@{
     schemaVersion = 1
     generatedAt = $export.updatedAt
-    sourceSnapshotStatus = 'current-user-export'
+    sourceSnapshotStatus = if ($PublishMergedRegistry) { 'merged-desktop-task-update' } else { 'current-user-export' }
     sourceSnapshotUpdatedAt = $export.updatedAt
-    dashboardExportUpdatedAt = $export.updatedAt
+    dashboardExportUpdatedAt = if ($PublishMergedRegistry) { $export.dashboardExportUpdatedAt } else { $export.updatedAt }
     description = 'Public task snapshot. Personal notes and dashboard habit logs are not included.'
     areas = $publicAreas
     tasks = $publicTasks
     history = $publicHistory
 }
 $publicTasksJson = $publicSnapshot | ConvertTo-Json -Depth 20
+if ($publicTasksJson -match $restrictedDataPattern) {
+    throw 'The public task snapshot appears to contain a government identifier, GSTIN, email address or phone number. Remove sensitive details before publishing.'
+}
 $publicSeedContent = 'window.PERSONAL_HQ_SEED = ' + $publicTasksJson.Trim() + ';'
 $publicIndexContent = Get-Content -LiteralPath $publicIndexPath -Raw
 $seedVersion = $syncedAt.ToString('yyyyMMddHHmmss')
@@ -247,8 +258,12 @@ $existingJson = if (Test-Path -LiteralPath $registryPath) {
 } else {
     $null
 }
-$registryChanged = $true
-if ($existingJson) {
+$registryChanged = -not $PublishMergedRegistry
+if ($PublishMergedRegistry) {
+    if (-not $existingJson) { throw 'The private task registry was not found while preparing merged publication.' }
+    $existing = $existingJson | ConvertFrom-Json
+    $registryChanged = $false
+} elseif ($existingJson) {
     $existing = $existingJson | ConvertFrom-Json
     $registryChanged = ($existing | ConvertTo-Json -Depth 50 -Compress) -ne ($export | ConvertTo-Json -Depth 50 -Compress)
     $incomingTaskIds = [System.Collections.Generic.HashSet[string]]::new()
@@ -300,7 +315,8 @@ if ($samePublicTasks -and $samePublicSeed -and $samePublicHistory -and $samePubl
         if ($LASTEXITCODE -ne 0) { throw 'The task-sync commit is ready, but pushing it to GitHub failed.' }
     }
     Sync-PagesTaskFeed
-    Write-Output 'The sanitized public task feed already matches this export.'
+    if ($PublishMergedRegistry) { Write-Output 'The sanitized public task feed already matches the merged private registry.' }
+    else { Write-Output 'The sanitized public task feed already matches this export.' }
     return
 }
 
@@ -315,4 +331,8 @@ git -C $repoRoot push origin main
 if ($LASTEXITCODE -ne 0) { throw 'The local registry commit succeeded, but pushing to GitHub failed.' }
 Sync-PagesTaskFeed
 
-Write-Output ("Synced " + $export.data.tasks.Count + " tasks to the public Personal HQ repository.")
+if ($PublishMergedRegistry) {
+    Write-Output ("Published the sanitized merged registry projection for " + $export.data.tasks.Count + " tasks; the full dashboard export timestamp was preserved.")
+} else {
+    Write-Output ("Synced " + $export.data.tasks.Count + " tasks to the public Personal HQ repository.")
+}
