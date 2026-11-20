@@ -37,6 +37,10 @@ The current GST Portal REG-01 guide also asks applicants to choose whether they 
 
 Ask the practitioner to compare Rule 14A with ordinary registration and, only if the actual seller/warehouse facts qualify, Rule 14B. Record B2B mix and projected tax liability, Aadhaar readiness, number of same-PAN registrations per State/UT, filing/withdrawal constraints, likely growth beyond the cap and consequences for ValueMela's invoicing and customer mix. The ₹2.5 lakh figure is a tax-liability cap on relevant B2B supplies, not a turnover cap. Do not opt into a simplified route merely because the portal offers it; confirm the current rule text and ongoing obligations for the actual model.
 
+### Bank details: application tab versus post-grant Rule 10A
+
+The GST Portal REG-01 guide describes a Bank Accounts tab introduced in November 2026, with application-time furnishing optional. An older paragraph on the same page says the tab was non-mandatory since 27 December 2018 and account details could be added only through amendment; the guide is internally inconsistent about the tab and workflow. Before filing, have the practitioner verify the actual live REG-01 screen and the applicant-specific process. Keep this separate from post-grant Rule 10A, which requires furnishing bank details within 30 days of registration grant or before the first GSTR-1/IFF outward-supply filing, whichever is earlier; confirm current legal text and successful portal validation. Do not place account details in this tracker.
+
 ## Prepare the application only after the route is confirmed
 
 GST Portal guidance describes a normal taxpayer application in FORM GST REG-01 with sections for business details, promoters/partners, authorised signatory, principal place of business, additional places, goods and services, state-specific details, Aadhaar authentication and verification. Prepare a checklist for the relevant entity type; not every document applies in every case.
