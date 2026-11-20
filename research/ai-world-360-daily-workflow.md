@@ -2,7 +2,7 @@
 
 **Goal:** Prepare one original video per day for YouTube and Instagram, with platform-specific exports from a shared source project where practical. A video is complete only after publication is confirmed on both intended channels and its URLs are recorded. The content format, niche, daily publishing time, editing setup and available production hours are not yet documented; do not assume them.
 
-**Tool order:** Use vidIQ and ChatGPT for title, description, tags and publishing metadata; use ChatGPT for the thumbnail/cover concept; use Google Flow for video generation. Keep the edit, captions and platform-specific exports in the selected editing tool. Preserve the user's review before publishing. A saved draft alone does not approve schedule activation; get any required final confirmation for the specific draft and schedule.
+**Tool roles:** Use vidIQ for topic interest, keyword/competitor research and metadata analysis; use ChatGPT to develop concepts and scripts and to draft/review titles, descriptions and tags. Compare the metadata suggestions against channel fit and the source evidence. Use ChatGPT for the thumbnail/cover concept and Google Flow for video generation. Keep editing, captions and platform-specific exports in the selected editing tool. Preserve the owner review before publishing. A saved draft alone does not approve schedule activation; get any required final confirmation for the specific draft and schedule.
 
 ## Daily production checklist
 

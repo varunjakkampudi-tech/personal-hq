@@ -52,6 +52,8 @@ The phased 20-to-40-animal site, operating, compliance and commissioning gates a
 
 The review-first GST checklist is in [research/valuemela-gst-registration.md](research/valuemela-gst-registration.md). It distinguishes questions to resolve from documents that must remain private. No GST application has been filed.
 
+The store also has an [operational readiness gate](life-system/plans/valuemela-operations-readiness.md) covering product, seller, payment, delivery, support and test-order evidence before paid promotion.
+
 
 ## Task registry for daily review
 
