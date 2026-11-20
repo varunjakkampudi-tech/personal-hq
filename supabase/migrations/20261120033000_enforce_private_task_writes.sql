@@ -205,8 +205,8 @@ grant execute on function public.restore_personal_hq_task(text, bigint) to authe
 
 -- Keep app writes on the CAS task RPCs. Other record types remain read-only
 -- until their own conflict-safe write operations are implemented.
-revoke insert, update, delete on public.personal_hq_tasks,
+revoke all on public.personal_hq_tasks,
   public.personal_hq_habits, public.personal_hq_habit_logs,
-  public.personal_hq_moments from anon, authenticated;
+  public.personal_hq_moments from public, anon, authenticated;
 grant select on public.personal_hq_tasks, public.personal_hq_habits,
   public.personal_hq_habit_logs, public.personal_hq_moments to authenticated;

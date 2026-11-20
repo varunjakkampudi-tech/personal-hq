@@ -85,6 +85,6 @@ create policy personal_hq_moments_owner on public.personal_hq_moments
 -- The hardened RPCs arrive in the next migration. Keep this initial schema
 -- private and read-only if migrations are applied one at a time.
 revoke all on public.personal_hq_tasks, public.personal_hq_habits,
-  public.personal_hq_habit_logs, public.personal_hq_moments from anon, authenticated;
+  public.personal_hq_habit_logs, public.personal_hq_moments from public, anon, authenticated;
 grant select on public.personal_hq_tasks, public.personal_hq_habits,
   public.personal_hq_habit_logs, public.personal_hq_moments to authenticated;
