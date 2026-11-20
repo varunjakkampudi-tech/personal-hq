@@ -7,3 +7,6 @@ node_modules/
 Thumbs.db
 
 life-system/private/
+supabase/.temp/
+supabase/.branches/
+supabase/.env*
