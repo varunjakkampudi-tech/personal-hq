@@ -73,3 +73,8 @@ For every course or topic, keep its record and classify it privately as **active
 7. Package the product and labs into a portfolio; update resume/profile drafts only in private review copies and retain existing owner-approval gates.
 
 Microfrontends/AEM and optional certificates stay later/research-only until the full-stack foundation and role value justify them. This order keeps requested subjects visible without treating every one as a simultaneous course.
+
+
+## AI tooling literacy checkpoint · 22 November 2026
+
+Selected ChatGPT research threads compared multi-agent orchestration tools and a premium UI skill stack for existing software projects. These were recommendations, not implementation or course completion evidence. If this topic is still useful, evaluate available tools, permission boundaries, cost and project isolation in a sandbox; do not connect new services or authorize repository/account access from old recommendations. Keep software-project work under its existing project gates. Current specific course states remain unresolved unless dated evidence is added to the private monitor.
