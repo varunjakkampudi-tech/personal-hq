@@ -48,6 +48,12 @@ Progress protocol: after each study block, retain the last completed checkpoint,
 
 Use a brief practical diagnostic to distinguish retained learning from refresh needs. A course title, tutorial, mock interview, or published guide alone does not establish current mastery or formal certification.
 
+## Owner continuation checkpoint · 21 November 2026
+
+The owner asked to restart the learning path from the beginning, retain prior learning, and monitor frontend, backend, SEO, AWS/GCP, monitoring, agentic AI and any unfinished or stopped work recovered from ChatGPT history. The ordered tracks and history ledger already cover this scope, so no duplicate track is needed. The task registry retains all 20 learning records and their existing statuses. First action remains the short baseline diagnostic; update the private progress monitor after each concrete study checkpoint. Current history review is partial, and unresolved status is not evidence that a course was stopped or completed.
+
+Use the private `learning-progress-monitor-2026-11-21.md` for dated checkpoints, course disposition, evidence strength, blocker, next step and artifact path. Keep credentials and personal course/account details private. Only sanitized task metadata may be published to Pages.
+
 For each topic, record one of: **not started**, **started**, **paused**, **completed with artifact**, **credential reported but unverified**, or **decided not to pursue**. Preserve the historical note if a track is paused or dropped, and record the decision/date before changing its active status. Continue reconciling project histories in bounded batches; a history index is not proof that every conversation has been reviewed.
 
 ## Restart and continuation rules
