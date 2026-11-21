@@ -2,7 +2,7 @@
 
 ## Daily pipeline
 
-1. Choose one original topic and validate interest with vidIQ. Record sources for factual claims.
+1. Prepare for the requested target cadence of two original videos daily, at 12:00 and 19:00 IST. Choose an original topic for each video and validate interest with vidIQ. Record sources for factual claims.
 2. Draft the hook, script and storyboard with ChatGPT; use vidIQ for topic/keyword research and metadata analysis. Compare title, description and tag suggestions with channel fit, sources and the approved brief; fact-check claims and originality.
 3. Generate visuals with Google Flow. Keep source media in approved private storage and verify third-party asset rights.
 4. Edit captions, audio and pacing; review each platform export and thumbnail/cover.
@@ -11,11 +11,11 @@
 7. Verify both platforms separately. Record live URLs and publish times; a draft or schedule is not completion.
 8. Check 24-hour and 7-day analytics when available. Carry forward any failed platform leg.
 
-Create one dated record per video with topic, sources, script version, generation/edit references, rights review, approval, status, live URLs, analytics and learning. Do not overwrite earlier records or put credentials/OTPs in the tracker. The format, niche, language, production hours and publish time still need confirmation. This plan does not approve a specific post.
+Create two dated records per day when working toward the requested 12:00 and 19:00 IST target, one per video, with topic, sources, script version, generation/edit references, rights review, approval, status, live URLs, analytics and learning. The cadence is an owner target, not a claim that the workflow is currently operating. Do not overwrite earlier records or put credentials/OTPs in the tracker. The format, niche, language and production capacity still need confirmation. The requested target times are 12:00 and 19:00 IST; exact assets and metadata remain subject to the release approval gate. This plan does not approve a specific post.
 
 ## Daily run card
 
-Create one copy of `life-system/templates/ai-world-360-daily-record.md` for each video. Keep source files and private approvals in approved private storage; the public repository can contain only non-sensitive completion state and links already public.
+Create one copy of `life-system/templates/ai-world-360-daily-record.md` for each video, with two records per day when following the requested 12:00 and 19:00 IST target. Keep source files and private approvals in approved private storage; the public repository can contain only non-sensitive completion state and links already public.
 
 1. **Brief:** record intended audience, one-sentence takeaway, language, format, duration target, platform destinations and the approved channel voice. If any are unknown, mark `Needs owner input`; do not fill with guesses.
 2. **Research:** save the vidIQ query/result date and primary sources for factual claims. Separate verified fact, creative framing and opinion. Drop claims that cannot be verified.
@@ -40,3 +40,4 @@ Create one copy of `life-system/templates/ai-world-360-daily-record.md` for each
 - `Reviewed`: 24-hour and 7-day checks are recorded or explicitly unavailable/not yet due.
 
 Do not schedule a release while any safety, rights, content-accuracy, final-asset or exact-approval gate is open. Keep owner-only facts and source records private. This run card is a process guide, not approval for any current draft or post.
+
