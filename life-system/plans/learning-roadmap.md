@@ -26,6 +26,12 @@ Use one small build or written checkpoint per topic. Record dates, links, labs, 
 14. **Portfolio and job readiness:** build one full-stack product with responsive frontend, secure API, database, deployment, SEO/accessibility evidence, observability, and a concise architecture note. Add targeted smaller labs for AWS/GCP and agentic AI. Practice DSA, system design, and explaining prior work. Keep resume/profile edits in private review copies until approved.
 15. **Credential research queue:** verify current requirements and value before choosing among AWS Developer/DevOps, GCP, IBM/Simplilearn data science, NVIDIA AI, Microsoft DevOps Expert, GenAI, Linux+, and Datadog. History includes owner-reported AWS Developer Associate and Copilot credential completions; exact credential records remain unverified privately.
 
+## Testing, application security and project recovery
+
+Treat tests and security as evidence gates throughout the capstone: use focused unit, integration and end-to-end checks for the user flows; verify input handling and authorization; review dependency risks; and record the exact revision, results and limitations. Do not claim a check passed unless it was actually run.
+
+For every recovered software project, record the canonical project identity, last verified repository or artifact revision and date, demonstrated behavior, technical/external/owner blockers, evidence-supported disposition, next authorized action, and project-specific completion or owner-acceptance gate. Keep this information in the existing private project ledger and task records; do not create duplicate tasks or infer status from silence.
+
 ## Working checkpoints and progress tracking
 
 Keep every track in the task registry until its evidence-based completion is recorded. A daily email summarizes the work; it never resets or replaces tasks. Do not treat every topic as a parallel course: complete the core full-stack capstone first, then add AWS/GCP, monitoring and agentic-AI labs that support it. Keep the small study log, course links, artifacts and credential evidence private.
