@@ -196,7 +196,7 @@ $publicSnapshot = [ordered]@{
     history = $publicHistory
 }
 $publicTasksJson = $publicSnapshot | ConvertTo-Json -Depth 20
-if ($publicTasksJson -match $restrictedDataPattern) {
+if ($publicTasksJson -cmatch $restrictedDataPattern) {
     throw 'The public task snapshot appears to contain a government identifier, GSTIN, email address or phone number. Remove sensitive details before publishing.'
 }
 $publicSeedContent = 'window.PERSONAL_HQ_SEED = ' + $publicTasksJson.Trim() + ';'
