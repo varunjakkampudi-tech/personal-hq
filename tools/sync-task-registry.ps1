@@ -64,7 +64,7 @@ if ($export.updatedAt -is [DateTimeOffset]) {
     $syncedAt = [DateTimeOffset]::Parse([string]$export.updatedAt, [Globalization.CultureInfo]::InvariantCulture, [Globalization.DateTimeStyles]::AssumeUniversal).ToUniversalTime()
 }
 $age = [DateTimeOffset]::UtcNow - $syncedAt
-if ($age.TotalMinutes -lt -5 -or (-not $PublishMergedRegistry -and $age.TotalHours -gt 24)) {
+if (-not $PublishMergedRegistry -and ($age.TotalMinutes -lt -5 -or $age.TotalHours -gt 24)) {
     throw 'The dashboard export timestamp is in the future or older than 24 hours. Create a fresh export.'
 }
 if (-not $PublishMergedRegistry -and (Test-Path -LiteralPath $registryPath)) {
